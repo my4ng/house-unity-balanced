@@ -1,0 +1,15 @@
+artifact_war_claimable_artifact_trigger = {
+	artifact_owner = {
+		is_ruler = yes
+		target_is_same_character_or_above = scope:defender
+	}
+	trigger_if ={
+		limit = {
+			scope:attacker = { is_ai = yes }
+		}
+		NOT = { has_variable = cursed_artifact }
+		artifact_rarity >= 4 #More than masterwork
+		save_temporary_scope_as = artifact_temp
+		scope:attacker = { can_benefit_from_artifact = scope:artifact_temp } 
+	}
+}

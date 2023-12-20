@@ -1,0 +1,101 @@
+# How different interactions affect actor/recipient opinions and house unity.
+#
+# Opinion: (does not apply to gift)
+#	- Base value: artifact_interaction_opinion_gain/loss
+# 	- If the interaction is hostile (e.g. challenge/scheme)
+#   	No opinion change for the actor
+#		1.5x opinion loss for recipient
+#	- If the interaction is non-hostile (e.g. demand) and actor is AI
+#		1/3x pleased opinion gain for the actor if artifact changes hand
+#		1/6x refusal opinion loss for the actor if artifact does not change hand
+#	- If the artifact does not change hand
+#		1/3x opinion loss for recipient
+#
+# House Unity:
+#	- Base value: artifact_interaction_house_unity_gain/loss
+#	- If the artifact does not change hand
+#		No house unity gain/loss
+#	- If the interaction is hostile (e.g. challenge/scheme)
+#		1.5x house unity loss
+
+artifact_interaction_recipient_opinion = {
+	scope:recipient = {
+		add_opinion = {
+			target = scope:actor
+			modifier = insult_opinion
+			opinion = {
+				value = artifact_interaction_opinion_loss
+				if = {
+					limit = { $CHANGED$ = no }
+					divide = 3
+				}
+				if = {
+					limit = { $HOSTILE$ = yes }
+					multiply = 1.5
+				}
+			}
+		}
+	}
+}
+
+artifact_interaction_actor_opinion = {
+	scope:actor = {
+		if = {
+			limit = { is_ai = yes }
+			if = {
+				limit = { $CHANGED$ = yes }
+				add_opinion = {
+					target = scope:recipient
+					modifier = pleased_opinion
+					opinion = {
+						value = artifact_interaction_opinion_gain
+						divide = 3
+					}
+				}
+			}
+			else = {
+				add_opinion = {
+					target = scope:recipient
+					modifier = refusal_opinion
+					opinion = {
+						value = artifact_interaction_opinion_loss
+						divide = 6
+					}
+				}
+			}
+		}
+	}
+}
+
+artifact_interaction_house_unity_effect = {
+	if = {
+		limit = { $GAIN$ = yes }
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = artifact_interaction_house_unity_gain
+			DESC = $DESC$
+			REVERSE_NON_HOUSE_TARGET = no
+		}
+	} else = {
+		if = {
+			limit = { $HOSTILE$ = yes }
+			add_clan_unity_interaction_effect = {
+				CHARACTER = scope:actor
+				TARGET = scope:recipient
+				VALUE = artifact_interaction_house_unity_loss_hostile
+				DESC = $DESC$
+				REVERSE_NON_HOUSE_TARGET = no
+			}
+		}
+		else = {
+			add_clan_unity_interaction_effect = {
+				CHARACTER = scope:actor
+				TARGET = scope:recipient
+				VALUE = artifact_interaction_house_unity_loss
+				DESC = $DESC$
+				REVERSE_NON_HOUSE_TARGET = no
+			}
+		}
+	}
+}

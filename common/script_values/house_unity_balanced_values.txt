@@ -1,0 +1,183 @@
+# Based on gift_artifact_opinion
+artifact_interaction_opinion = {
+	scope:artifact = {
+		value = 0
+
+		# Per level of Rarity
+		if = {
+			limit = { rarity = common }
+			add = 10
+		}
+		else_if = {
+			limit = { rarity = masterwork }
+			add = 25
+		}
+		else_if = {
+			limit = { rarity = famed }
+			add = 50
+		}
+		else = { add = 100 }
+
+		if = {
+			limit = { is_unique = yes }
+			multiply = 1.5 # *1.5 for unique artifacts
+		}
+
+		if = { # AI Greed
+			limit = { scope:recipient.ai_greed > 0 }
+			multiply = { # Up to *2
+				value = 1
+				add = {
+					value = scope:recipient.ai_greed
+					divide = 100
+				}
+			}
+		}
+
+		if = {
+			limit = { scope:recipient.liege = scope:actor }
+			multiply = 0.75 # 3/4 for vassals
+		}
+		if = {
+			limit = { scope:recipient = scope:actor.faith.religious_head }
+			multiply = 1.5 # *1.5 for religious heads
+		}
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_variable = banner_house
+						NOT = { var:banner_house = scope:recipient.house }
+					}
+					AND = {
+						has_variable = banner_dynasty
+						NOT = { var:banner_dynasty = scope:recipient.dynasty }
+					}
+				}
+			}
+			multiply = 0.5 # 1/2 for useless banners
+		}
+		else_if = {
+			limit = {
+				scope:recipient = {
+					NOR = {
+						can_equip_artifact = prev
+						can_benefit_from_artifact = prev
+					}
+				}
+			}
+			multiply = 0.5 # 1/2 for useless artifacts
+		}
+		else_if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						NOT = { can_equip_artifact = prev }
+						NOT = { can_benefit_from_artifact = prev }
+					}
+				}
+			}
+			multiply = 0.75 # 2/3 for unfit artifacts
+		}
+		else = { min = 10 }
+
+		max = 150
+	}
+}
+
+artifact_interaction_opinion_loss = {
+	value = 0
+	subtract = artifact_interaction_opinion
+}
+
+artifact_interaction_opinion_gain = {
+	value = artifact_interaction_opinion
+}
+
+artifact_interaction_house_unity = {
+	value = 0
+	scope:actor.house ?= {
+		# Per level of Rarity
+		if = {
+			limit = { scope:artifact = { rarity = common }}
+			add = miniscule_unity_value
+		}
+		else_if = {
+			limit = { scope:artifact = { rarity = masterwork }}
+			add = minor_unity_value
+		}
+		else_if = {
+			limit = { scope:artifact = { rarity = famed }}
+			add = medium_unity_value
+		}
+		else = { add = major_unity_value }
+
+		if = {
+			limit = { scope:artifact = { is_unique = yes }}
+			multiply = 1.5
+		}
+	}
+}
+
+artifact_interaction_house_unity_gain = {
+	value = artifact_interaction_house_unity
+}
+
+artifact_interaction_house_unity_loss = {
+	value = 0
+	subtract = artifact_interaction_house_unity
+}
+
+artifact_interaction_house_unity_loss_hostile = {
+	value = 0
+	subtract = artifact_interaction_house_unity
+	multiply = 1.5
+}
+
+buy_artifact_claim_cost_piety = {
+	scope:target = {
+		value = 0
+		if = {
+			limit = { rarity = common }
+			add = minor_buy_claim_piety_value
+		}
+		else_if = {
+			limit = { rarity = masterwork }
+			add = medium_buy_claim_piety_value
+		}
+		else_if = {
+			limit = { rarity = famed }
+			add = major_buy_claim_piety_value
+		}
+		else_if = {
+			limit = { rarity = masterwork }
+			add = massive_buy_claim_piety_value
+		}
+	}
+}
+
+buy_artifact_claim_cost_prestige = {
+	scope:target = {
+		value = 0
+		if = {
+			limit = { rarity = common }
+			add = minor_buy_claim_prestige_value
+		}
+		else_if = {
+			limit = { rarity = masterwork }
+			add = medium_buy_claim_prestige_value
+		}
+		else_if = {
+			limit = { rarity = famed }
+			add = major_buy_claim_prestige_value
+		}
+		else_if = {
+			limit = { rarity = masterwork }
+			add = massive_buy_claim_prestige_value
+		}
+		if = {
+			limit = { is_unique = yes }
+			multiply = 1.5
+		}
+	}
+}

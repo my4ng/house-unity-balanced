@@ -1,0 +1,160 @@
+###################
+# UNITY VALUES    #
+###################
+
+number_of_landed_house_members_value = {
+	value = 0
+	house = {
+		every_house_member = {
+			limit = {
+				is_landed = yes
+			}
+			add = 1
+		}
+	}
+}
+
+number_of_landed_house_unity_members_value = {
+	value = 0
+	every_house_member = {
+		limit = {
+			is_landed = yes
+		}
+		add = 1
+		max = 10
+	}
+	desc = MODIFIER_DEFINITION_MAIN_DESC_HOUSE_UNITY
+}
+
+number_of_landed_house_members_multiplier_value = {
+	value = 0
+	every_house_member = {
+		limit = {
+			is_landed = yes
+		}
+		add = 1
+	}
+}
+
+number_of_landed_house_members_multiplier = {
+	value = 1.0
+	subtract = {
+		value = 0.1
+		multiply = number_of_landed_house_members_multiplier_value
+	}
+	min = 0.25
+}
+
+# BASE HOUSE UNITY VALUES
+miniscule_unity_value = {
+	value = 1
+	multiply = number_of_landed_house_members_multiplier
+}
+
+minor_unity_value = {
+	value = 2
+	multiply = number_of_landed_house_members_multiplier
+}
+medium_unity_value = {
+	value = 4
+	multiply = number_of_landed_house_members_multiplier
+}
+major_unity_value = {
+	value = 6
+	multiply = number_of_landed_house_members_multiplier
+}
+massive_unity_value = {
+	value = 10
+	multiply = number_of_landed_house_members_multiplier
+}
+
+
+miniscule_unity_loss = {
+	value = 0
+	subtract = miniscule_unity_value
+}
+minor_unity_loss = {
+	value = 0
+	subtract = minor_unity_value
+}
+medium_unity_loss = {
+	value = 0
+	subtract = medium_unity_value
+}
+major_unity_loss = {
+	value = 0
+	subtract = major_unity_value
+}
+massive_unity_loss = {
+	value = 0
+	subtract = massive_unity_value
+}
+
+miniscule_unity_gain = {
+	value = miniscule_unity_value
+}
+minor_unity_gain = {
+	value = minor_unity_value
+}
+medium_unity_gain = {
+	value = medium_unity_value
+}
+major_unity_gain = {
+	value = major_unity_value
+}
+massive_unity_gain = {
+	value = massive_unity_value
+}
+
+unity_house_head_multiplier_value = 2 # How much more of an impact house heads have on house unity
+
+# EFFECTS AND PARAMETER VALUES
+unity_antagonistic_cb_cost_display_value = -30
+unity_antagonistic_cb_cost_value = {
+	value = 1
+	add = {
+		value = unity_antagonistic_cb_cost_display_value
+		divide = 100
+	}
+}
+
+unity_competitive_cb_cost_display_value = -15
+unity_competitive_cb_cost_value = {
+	value = 1
+	add = {
+		value = unity_competitive_cb_cost_display_value
+		divide = 100
+	}
+}
+
+unity_friendly_cb_cost_display_value = 15
+unity_friendly_cb_cost_value = {
+	value = 1
+	add = {
+		value = unity_friendly_cb_cost_display_value
+		divide = 100
+	}
+}
+
+unity_harmonious_cb_cost_display_value = 30
+unity_harmonious_cb_cost_value = {
+	value = 1
+	add = {
+		value = unity_harmonious_cb_cost_display_value
+		divide = 100
+	}
+}
+
+unity_antagonistic_invasion_cooldown_value = {
+	value = 10
+}
+
+clan_powerful_vassal_no_alliance_opinion_penalty_value = {
+	value = -30
+}
+clan_vassal_no_alliance_opinion_penalty_value = {
+	value = -15
+}
+
+unity_major_decision_piety_cost = { value = 200 }
+unity_minor_decision_piety_cost = { value = 100 }

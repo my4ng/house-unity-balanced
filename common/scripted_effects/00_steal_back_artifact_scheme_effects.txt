@@ -1,0 +1,118 @@
+#Scripted effects relating to Stealing Schemes
+
+#####################################################################
+# EFFECT LIST
+#####################################################################
+# !!! Remember to add all new effects with a short description here !!!
+
+#steal_back_artifact_success_effect
+#steal_back_artifact_failure_effect
+
+######################################################################
+# EFFECTS
+######################################################################
+
+#Used in the immediate of the Scheme Owner's success event
+steal_back_artifact_success_effect = {
+	scope:owner = {
+		save_temporary_scope_as = actor
+	}
+	
+	scope:target = {
+		save_temporary_scope_as = recipient
+
+		artifact_interaction_recipient_opinion = {
+			CHANGED = yes
+			HOSTILE = yes
+		}
+
+		# Stolen House score and message effects
+		if = {
+			limit = {
+				scope:target = {
+					existing_feud_against_target_trigger = { TARGET = scope:owner }
+				}
+			}
+			scope:target.house = {
+				house_head = {
+					random_owned_story = {
+						limit = { story_type = story_cycle_house_feud }
+						# Decrease score
+						change_variable = {
+							name = house_feud_death_counter
+							add = house_feud_small_counter_value
+						}
+					}
+				}
+				# Inform House player members of score loss
+				hidden_effect = {
+					every_house_member = {
+						send_interface_message = {
+							type = house_feud_stole_artifact_us_message
+							left_icon = scope:target
+							right_icon = scope:owner
+							custom_tooltip = house_feud_tipped_scales_neg_small
+						}
+					}
+				}
+			}
+		}
+		# Stealing House score and message effects
+		if = {
+			limit = {
+				scope:owner = {
+					existing_feud_against_target_trigger = { TARGET = scope:target }
+				}
+			}
+			scope:owner.house = {
+				house_head = {
+					random_owned_story = {
+						limit = { story_type = story_cycle_house_feud }
+						# Increase score
+						change_variable = {
+							name = house_feud_kill_counter
+							add = house_feud_small_counter_value
+						}
+					}
+				}
+				# Inform House player members of score gain 
+				hidden_effect = {
+					every_house_member = {
+						send_interface_message = {
+							type = house_feud_stole_artifact_them_message
+							left_icon = scope:owner
+							right_icon = scope:target
+							custom_tooltip = house_feud_tipped_scales_pos_small
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	artifact_interaction_house_unity_effect = {
+		GAIN = no
+		HOSTILE = yes
+		DESC = clan_unity_steal_artifact.desc
+	}
+}
+
+steal_back_artifact_failure_effect = {
+	scope:owner = {
+		save_temporary_scope_as = actor
+	}
+	scope:target = {	
+		save_temporary_scope_as = recipient
+
+		#Add Watchful Modifier to the target
+		add_character_modifier = {
+			modifier = watchful_modifier
+			days = watchful_modifier_duration
+		}
+
+		artifact_interaction_recipient_opinion = {
+			CHANGED = no
+			HOSTILE = yes
+		}
+	}
+}
