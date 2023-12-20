@@ -1,4 +1,4 @@
-![version_badge](https://img.shields.io/badge/latest_tested_version-1.11.3-darkred)
+![supported version](https://img.shields.io/badge/supported_version-1.11.3-darkred) ![license](https://img.shields.io/badge/license-BSD--2--Clause_Plus_Patent-brightgreen)
 
 # House Unity Balanced
 
