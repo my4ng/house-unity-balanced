@@ -2,13 +2,24 @@
 
 # House Unity Balanced
 
-House Unity Balanced is a **Crusader Kings 3** mod, designed to rework and adjust aspects of **House Unity**, "a new measure of the internal stability in the ruling house of a Clan realm".
+House Unity Balanced is a **Crusader Kings 3** mod, designed to rework and adjust aspects of **House Unity**, "a measure of the internal stability in the ruling house of a Clan realm".
 
-The motivation is straight-forward; as a house grows over time, the proportional power of the house head is _significantly_ reduced. Since there are more unity-reducing actions, such as imprisonment and demand artifact, than promoting ones, the house unity almost always tends towards antagonistic, with little the player can do to swing the scale. This is exacerbated by the fact that cadets branches may only be created by independent rulers.
+The motivation is straight-forward; as a house grows over time, the proportional power of each individual member is _significantly_ reduced. Since there are more unity-reducing actions, such as imprisonment and demand artifact, than promoting ones, the house unity almost always tends towards antagonistic, with little the player can do to swing the scale. This is exacerbated by the fact that cadets branches may only be created by independent rulers.
 
 The primary features of this mod is dynamic scaling of house unity changes: if there are more house members, measured by the number of landed characters, the less impactful each individual action will be.
 
-# Features
+## Notable Features
+
+- Dynamic House Unity scaling
+- Artifact interaction improvements
+  - Disallow demand/challenge for Artifact against a House member without a personal claim
+  - Adjust House Unity/Opinion changes based on Artifact quality and hostility of interaction
+  - Ensure House Unity change only occurs if the Artifact changes hand
+  - Add event for failed steal Artifact scheme target
+- Tweaked character interaction (e.g. lover, rival) House Unity changes
+- Improved House Unity history descriptions
+
+## Roadmap
 
 - [x] Dynamic scaling
 - [x] Artifact Interactions
@@ -19,7 +30,7 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 - [ ] Thumbnail
 - [ ] Steam Workshop
 
-# License
+## License
 
 This mod is licensed under the **BSD-2-Clause Plus Patent License**.
 
