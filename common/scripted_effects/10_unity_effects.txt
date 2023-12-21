@@ -1,41 +1,6 @@
 add_clan_unity_interaction_effect = {
 	if = {
-		limit = { # Check if unity is relevant
-			$CHARACTER$ = { government_has_flag = government_is_clan }
-			$TARGET$ = { government_has_flag = government_is_clan }
-			exists = $CHARACTER$.house
-			exists = $TARGET$.house
-			$CHARACTER$.house = $TARGET$.house
-		}
-		
-		# Save scopes for localisation
-		$CHARACTER$ = { save_scope_as = unity_character }
-		$TARGET$ = { save_scope_as = unity_target }
-		
-		$CHARACTER$.house = {
-			save_scope_as = character_house
-			
-			add_unity_value = {
-				value = {
-					value = $VALUE$
-					if = { # House heads have a larger impact on unity
-						limit = {
-							OR = {
-								house_head = $CHARACTER$
-								house_head = $TARGET$ # Check if EITHER character is the house head
-							}
-						}
-						multiply = unity_house_head_multiplier_value
-					}
-				}
-				character = $CHARACTER$
-				desc = $DESC$
-			}
-		}
-	}
-	else_if = {
 		limit = {
-			$REVERSE_NON_HOUSE_TARGET$ = yes
 			$CHARACTER$ = { government_has_flag = government_is_clan }
 			exists = $CHARACTER$.house
 		}
@@ -47,18 +12,46 @@ add_clan_unity_interaction_effect = {
 		$CHARACTER$.house = {
 			save_scope_as = character_house
 			
-			add_unity_value = {
-				value = {
-					value = 0
-					subtract = $VALUE$
-					if = { # House heads have a larger impact on unity
-						limit = { house_head = $CHARACTER$ }
-						multiply = unity_house_head_multiplier_value
-					}
+			if = {
+				limit = {
+					$TARGET$ = { government_has_flag = government_is_clan }
+					exists = $TARGET$.house
+					$CHARACTER$.house = $TARGET$.house
 				}
-				character = $CHARACTER$
-				desc = $DESC$
+
+				add_unity_value = {
+					value = {
+						value = $VALUE$
+						if = { # House heads have a larger impact on unity
+							limit = {
+								OR = {
+									house_head = $CHARACTER$
+									house_head = $TARGET$ # Check if EITHER character is the house head
+								}
+							}
+							multiply = unity_house_head_multiplier_value
+						}
+					}
+					character = $CHARACTER$
+					desc = $DESC$
+				}				
 			}
-		}
+			else_if = {
+				limit = { $REVERSE_NON_HOUSE_TARGET$ = yes }
+
+				add_unity_value = {
+					value = {
+						value = 0
+						subtract = $VALUE$
+						if = { # House heads have a larger impact on unity
+							limit = { house_head = $CHARACTER$ }
+							multiply = unity_house_head_multiplier_value
+						}
+					}
+					character = $CHARACTER$
+					desc = $DESC$
+				}
+			}
+		}		
 	}
 }
