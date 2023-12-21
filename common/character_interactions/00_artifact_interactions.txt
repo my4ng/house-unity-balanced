@@ -1217,17 +1217,6 @@ demand_artifact_interaction = {
 	cooldown = { years = 3 }
 	cooldown_against_recipient = { years = 7 }
 
-	has_valid_target_showing_failures_only = {
-		scope:actor = {
-			NAND = {
-				is_ai = yes
-				NOT = {
-					can_benefit_from_artifact = scope:target
-				}
-			}
-		}
-	}
-
 	can_send = {
 		custom_description = {
 			text = demand_artifact_interaction_house_claim
@@ -1885,17 +1874,6 @@ challenge_for_artifact_interaction = {
 		}
 		scope:recipient = { is_imprisoned = no }
 		scope:actor = { is_imprisoned = no }
-	}
-
-	has_valid_target_showing_failures_only = {
-		scope:actor = {
-			NAND = {
-				is_ai = yes
-				NOT = {
-					can_benefit_from_artifact = scope:target
-				}
-			}
-		}
 	}
 
 	can_send = {
@@ -2691,17 +2669,6 @@ start_stealing_back_artifact = {
 		}
 	}
 
-	has_valid_target_showing_failures_only = {
-		scope:actor = {
-			NAND = {
-				is_ai = yes
-				NOT = {
-					can_benefit_from_artifact = scope:target
-				}
-			}
-		}
-	}
-
 	desc = {
 		triggered_desc = {
 			trigger = {
@@ -3228,17 +3195,6 @@ buy_artifact_claim = {
 
 		scope:recipient = {
 			is_busy_in_events_localised = yes
-		}
-	}
-
-	has_valid_target_showing_failures_only = {
-		scope:actor = {
-			NAND = {
-				is_ai = yes
-				NOT = {
-					can_benefit_from_artifact = scope:target
-				}
-			}
 		}
 	}
 

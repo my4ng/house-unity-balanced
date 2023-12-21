@@ -8,8 +8,10 @@ artifact_war_claimable_artifact_trigger = {
 			scope:attacker = { is_ai = yes }
 		}
 		NOT = { has_variable = cursed_artifact }
-		artifact_rarity >= 4 #More than masterwork
-		save_temporary_scope_as = artifact_temp
-		scope:attacker = { can_benefit_from_artifact = scope:artifact_temp } 
+		OR = {
+			rarity = famed
+			rarity = illustrious
+		}
+		scope:attacker = { can_benefit_from_artifact = prev } 
 	}
 }

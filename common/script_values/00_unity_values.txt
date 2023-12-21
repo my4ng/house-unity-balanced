@@ -39,7 +39,7 @@ number_of_landed_house_members_multiplier_value = {
 number_of_landed_house_members_multiplier = {
 	value = 1.0
 	subtract = {
-		value = 0.1
+		value = 0.025
 		multiply = number_of_landed_house_members_multiplier_value
 	}
 	min = 0.25
