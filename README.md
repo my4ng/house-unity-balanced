@@ -27,7 +27,7 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 - [ ] Diplomatic Interactions
 - [ ] Intrigue Schemes
 - [ ] Cadet Branch requirements
-- [ ] Thumbnail
+- [x] Thumbnail
 - [ ] Steam Workshop
 
 ## License
