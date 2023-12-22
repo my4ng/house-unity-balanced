@@ -24,6 +24,7 @@ steal_back_artifact_success_effect = {
 		artifact_interaction_recipient_opinion = {
 			CHANGED = yes
 			HOSTILE = yes
+			MODIFIER = stole_artifact_from_me
 		}
 
 		# Stolen House score and message effects
@@ -113,6 +114,7 @@ steal_back_artifact_failure_effect = {
 		artifact_interaction_recipient_opinion = {
 			CHANGED = no
 			HOSTILE = yes
+			MODIFIER = attempted_to_steal_artifact_from_me
 		}
 	}
 }

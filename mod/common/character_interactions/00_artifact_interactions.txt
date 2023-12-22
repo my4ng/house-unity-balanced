@@ -1235,6 +1235,7 @@ demand_artifact_interaction = {
 				artifact_interaction_recipient_opinion = {
 					CHANGED = yes
 					HOSTILE = no
+					MODIFIER = insult_opinion
 				}
 
 				if = {
@@ -1374,6 +1375,7 @@ demand_artifact_interaction = {
 				artifact_interaction_recipient_opinion = {
 					CHANGED = no
 					HOSTILE = no
+					MODIFIER = insult_opinion
 				}
 			}
 		}
@@ -3309,6 +3311,7 @@ buy_artifact_claim = {
 		artifact_interaction_recipient_opinion = {
 			CHANGED = no
 			HOSTILE = no
+			MODIFIER = claimed_my_artifact_opinion
 		}
 
 		# Removed house unity loss as no artifact has actually changed hand 
