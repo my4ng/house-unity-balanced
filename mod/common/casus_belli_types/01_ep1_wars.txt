@@ -41,27 +41,52 @@ artifact_war = {
 		prestige = {
 			value = 0
 			add = {
-				value = medium_prestige_value
+				value = major_prestige_value
 				desc = CB_BASE_COST
 			}
-		
-			# Additional prestige cost for any house claimed artifact
-			# from the same dynasty
-			if = {
-				limit = {
-					any_house_claimed_artifact = {
+
+			any_personal_claimed_artifact = {
+				if = {
+					limit = {
 						artifact_war_claimable_artifact_trigger = yes
-						artifact_owner = {
-							house ?= {
-								NOT = { house = scope:attacker.house }
-								dynasty = scope:attacker.dynasty
+					}
+					add = {
+						value = artifact_war_prestige_cost
+						desc = artifact_war_prestige_cost_personal.desc
+					}
+				}
+
+			}
+		
+			any_house_claimed_artifact = {
+				if = {
+					limit = {
+						artifact_war_claimable_artifact_trigger = yes
+						scope:attacker = {
+							NOT = {
+								has_personal_artifact_claim = prev
+							}
+						}
+						if = {
+							limit = {
+								# Additional prestige cost for any house claimed artifact
+								# from the same dynasty without personal claim
+								# Note: not possible to be in the same house since checked false already
+								exists = artifact_owner.dynasty
+								scope:attacker.dynasty = artifact_owner.dynasty
+							}
+							add = {
+								value = artifact_war_prestige_cost_dynasty
+								desc = artifact_war_prestige_cost_house_dynasty.desc
+							}
+						}
+						else = {
+							add = {
+								value = artifact_war_prestige_cost
+								desc = artifact_war_prestige_cost_house.desc
 							}
 						}
 					}
-				}
-				add = {
-					value = minor_prestige_value
-					desc = dynastic_claimed_artifact_cb
 				}
 			}
 
