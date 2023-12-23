@@ -1,4 +1,4 @@
-#On actions relating to relationships between characters
+﻿#On actions relating to relationships between characters
 
 ####################################
 # NOTE

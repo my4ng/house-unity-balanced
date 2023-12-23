@@ -1,4 +1,4 @@
-artifact_war_claimable_artifact_trigger = {
+﻿artifact_war_claimable_artifact_trigger = {
 	artifact_owner = {
 		is_ruler = yes
 		target_is_same_character_or_above = scope:defender

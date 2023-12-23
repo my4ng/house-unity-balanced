@@ -1,4 +1,4 @@
-#Scripted effects relating to Stealing Schemes
+﻿#Scripted effects relating to Stealing Schemes
 
 #####################################################################
 # EFFECT LIST

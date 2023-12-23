@@ -1,4 +1,4 @@
-# demand_artifact_interaction_valid_claim = {
+﻿# demand_artifact_interaction_valid_claim = {
 # 	third_not = demand_artifact_interaction_valid_claim
 # }
 

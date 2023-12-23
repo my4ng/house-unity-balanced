@@ -1,4 +1,4 @@
-# How different interactions affect actor/recipient opinions and house unity.
+﻿# How different interactions affect actor/recipient opinions and house unity.
 #
 # Opinion: (does not apply to gift)
 #	- Base value: artifact_interaction_opinion_gain/loss

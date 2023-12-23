@@ -1,4 +1,4 @@
-# Based on gift_artifact_opinion
+﻿# Based on gift_artifact_opinion
 artifact_interaction_opinion = {
 	scope:artifact = {
 		value = 0

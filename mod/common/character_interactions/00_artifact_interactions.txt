@@ -1,4 +1,4 @@
-# Give away an artifact to improve relations
+﻿# Give away an artifact to improve relations
 gift_artifact_interaction = {
 	category = interaction_category_friendly
 	common_interaction = yes

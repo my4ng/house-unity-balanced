@@ -1,4 +1,4 @@
-artifact_war = {
+﻿artifact_war = {
 	icon = artifact_war
 	group = artifact
 	ai_only_against_neighbors = yes
