@@ -13,20 +13,11 @@
 				any_personal_claimed_artifact = {
 					artifact_war_claimable_artifact_trigger = yes
 				}
+				# TODO: Only House Head allowed to press for house claimed artifacts
 				house ?= {
 					any_house_claimed_artifact = {
 						artifact_war_claimable_artifact_trigger = yes
-						artifact_owner = {
-							trigger_if = {
-								# Lowborn or not the same House
-								limit = {
-									exists = house
-								}
-								NOT = {
-									house = scope:attacker.house
-								}
-							}
-						}
+						artifact_war_owner_eligible_trigger = yes
 					}
 				}
 			}
@@ -36,6 +27,26 @@
 	on_declaration = {
 		on_declared_war = yes
 	}
+
+	# cost = {
+	# 	prestige = {
+	# 		value = 0
+	# 		add = {
+	# 			value = major_prestige_value
+	# 			desc = CB_BASE_COST
+	# 		}
+	
+	# 		scope:attacker = {
+	# 			every_personal_claimed_artifact = {
+	# 				limit = { artifact_war_claimable_artifact_trigger = yes }
+	# 				add = {
+	# 					value = artifact_war_prestige_cost
+	# 					desc = CB_ARTIFACT_WAR_PRESTIGE_PERSONAL
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 	
 	cost = {
 		prestige = {
@@ -47,34 +58,38 @@
 
 			scope:attacker = {
 				add = {
-					every_personal_claimed_artifact = {
-						limit = { artifact_war_claimable_artifact_trigger = yes }
-						add = artifact_war_prestige_cost
+					value = {
+						every_personal_claimed_artifact = {
+							limit = { artifact_war_claimable_artifact_trigger = yes }
+							add = artifact_war_prestige_cost
+						}
 					}
 					desc = CB_ARTIFACT_WAR_PRESTIGE_PERSONAL
 				}
 
 				house ?= {
 					add = {
-						every_house_claimed_artifact = {
-							limit = { 
-								artifact_war_claimable_artifact_trigger = yes
-								NOT = { 
-									scope:attacker = { has_personal_artifact_claim = prev }
+						value = {
+							every_house_claimed_artifact = {
+								limit = { 
+									artifact_war_claimable_artifact_trigger = yes
+									artifact_war_owner_eligible_trigger = yes
+									NOT = { 
+										scope:attacker = { has_personal_artifact_claim = prev }
+									}
 								}
-							}
-							if = {
-								limit = {
-									# Additional prestige cost for any house claimed artifact
-									# from the same dynasty without personal claim
-									# Note: not possible to be in the same house since checked false already
-									exists = artifact_owner.dynasty
-									scope:attacker.dynasty = artifact_owner.dynasty	
+								if = {
+									limit = {
+										# Additional prestige cost for any house claimed artifact
+										# from the same dynasty without personal claim
+										exists = artifact_owner.dynasty
+										scope:attacker.dynasty = artifact_owner.dynasty	
+									}
+									add = artifact_war_prestige_cost_dynasty
 								}
-								add = artifact_war_prestige_cost_dynasty
-							}
-							else = {
-								add = artifact_war_prestige_cost
+								else = {
+									add = artifact_war_prestige_cost
+								}
 							}
 						}
 						desc = CB_ARTIFACT_WAR_PRESTIGE_HOUSE
@@ -119,40 +134,32 @@
 				every_house_claimed_artifact = {
 					limit = {
 						artifact_war_claimable_artifact_trigger = yes
-						artifact_owner = {
-							trigger_if = {
-								# Lowborn or not the same House
-								limit = {
-									exists = house
-								}
-								NOT = {
-									house = scope:attacker.house
-								}
-							}
-						}
+						artifact_war_owner_eligible_trigger = yes
 					}
 					add_to_list = transferred_artifacts
 				}
 			}
+			
 			every_in_list = {
 				list = transferred_artifacts
-				save_scope_as = artifact
+				artifact_owner = {
+					save_temporary_scope_as = previous_owner
+				}
 				set_owner = {
 					target = scope:attacker
 					history = {
 						type = conquest
-						actor = scope:defender
+						actor = scope:previous_owner
 						recipient = scope:attacker
 					}
 				}
-				scope:defender = {
+				# Change the personal claim from defender to artifact_owner
+				scope:previous_owner = {
 					if = {
 						limit = {
-							NOT = {
-								has_personal_artifact_claim = scope:artifact
-							}
+							NOT = { has_personal_artifact_claim = prev }
 						}
-						add_personal_artifact_claim = scope:artifact
+						add_personal_artifact_claim = prev
 					}
 				}
 			}
@@ -244,17 +251,7 @@
 				every_house_claimed_artifact = {
 					limit = {
 						artifact_war_claimable_artifact_trigger = yes
-						artifact_owner = {
-							trigger_if = {
-								# Lowborn or not the same House
-								limit = {
-									exists = house
-								}
-								NOT = {
-									house = scope:attacker.house
-								}
-							}
-						}
+						artifact_war_owner_eligible_trigger = yes
 					}
 					scope:attacker.house = {
 						remove_house_artifact_claim = prev
@@ -302,32 +299,15 @@
 	}
 	
 	should_invalidate = {
-		NOT = {
-			scope:attacker = {
-				OR = {
-					any_personal_claimed_artifact = {
-						artifact_owner = {
-							is_ruler = yes
-							target_is_same_character_or_above = scope:defender
-						}
-					}
-					house ?= {
-						any_house_claimed_artifact = {
-							artifact_owner = {
-								OR = {
-									# Not the same House
-									house ?= {
-										NOT = {
-											house = scope:attacker.house
-										}
-									}
-									# Defender is lowborn
-									is_lowborn = yes
-								}
-								is_ruler = yes
-								target_is_same_character_or_above = scope:defender
-							}
-						}
+		scope:attacker = {
+			NOR = {
+				any_personal_claimed_artifact = {
+					artifact_war_claimable_artifact_trigger = yes
+				}
+				house ?= {
+					any_house_claimed_artifact = {
+						artifact_war_claimable_artifact_trigger = yes
+						artifact_war_owner_eligible_trigger = yes
 					}
 				}
 			}
@@ -374,9 +354,9 @@ reclaim_relic_artifact_war = {
 	allow_hostages = no
 
 	allowed_for_character = {
-		OR = {
+		trigger_if = {
+			limit = { is_ai = yes }
 			highest_held_title_tier >= tier_duchy
-			is_ai = no
 		}
 	}
 
@@ -428,6 +408,37 @@ reclaim_relic_artifact_war = {
 				desc = CB_BASE_COST
 			}
 
+			scope:defender = {
+				add = {
+					value = {
+						every_character_artifact = {
+							limit = {
+								OR = {
+									relic_war_valid_religious_artefact_trigger = yes
+									relic_war_valid_struggle_artefact_trigger = yes
+								}
+							}
+							add = reclaim_relic_war_prestige_cost
+						}
+						every_vassal_or_below = {
+							limit = {
+								NOT = { faith = scope:attacker.faith }
+							}
+							every_character_artifact = {
+								limit = {
+									OR = {
+										relic_war_valid_religious_artefact_trigger = yes
+										relic_war_valid_struggle_artefact_trigger = yes
+									}
+								}
+								add = reclaim_relic_war_prestige_cost
+							}
+						}
+					}
+					desc = CB_RECLAIM_RELIC_WAR_PRESTIGE
+				}
+			}
+
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -462,28 +473,11 @@ reclaim_relic_artifact_war = {
 						relic_war_valid_struggle_artefact_trigger = yes
 					}
 				}
-				set_owner = {
-					target = scope:attacker
-					history = {
-						type = conquest
-						actor = scope:defender
-						recipient = scope:attacker
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							scope:defender = { has_personal_artifact_claim = prev }
-						}
-					}
-					scope:defender = { add_personal_artifact_claim = prev }
-				}
+				add_to_list = transferred_artifacts
 			}
 			every_vassal_or_below = {
 				limit = {
-					NOT = {
-						faith = scope:attacker.faith
-					}
+					NOT = { faith = scope:attacker.faith }
 				}
 				every_character_artifact = {
 					limit = {
@@ -495,22 +489,32 @@ reclaim_relic_artifact_war = {
 							relic_war_valid_struggle_artefact_trigger = yes
 						}
 					}
-					set_owner = {
-						target = scope:attacker
-						history = {
-							type = conquest
-							actor = scope:attacker
-							recipient = scope:defender
-						}
+					add_to_list = transferred_artifacts
+				}
+			}
+		}
+
+		every_in_list = {
+			list = transferred_artifacts
+			artifact_owner = {
+				save_temporary_scope_as = previous_owner
+			}
+
+			set_owner = {
+				target = scope:attacker
+				history = {
+					type = conquest
+					actor = scope:previous_owner
+					recipient = scope:attacker
+				}
+			}
+			# Change the personal claim from defender to artifact_owner
+			scope:previous_owner = {
+				if = {
+					limit = {
+						NOT = { has_personal_artifact_claim = prev }
 					}
-					if = {
-						limit = {
-							NOT = {
-								scope:defender = { has_personal_artifact_claim = prev }
-							}
-						}
-						scope:defender = { add_personal_artifact_claim = prev }
-					}
+					add_personal_artifact_claim = prev
 				}
 			}
 		}

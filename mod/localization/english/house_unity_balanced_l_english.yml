@@ -1,6 +1,7 @@
 ﻿l_english:
   CB_ARTIFACT_WAR_PRESTIGE_PERSONAL: "Personal Claim"
   CB_ARTIFACT_WAR_PRESTIGE_HOUSE: "House Claim"
+  CB_RECLAIM_RELIC_WAR_PRESTIGE: "Relics"
 
   demand_artifact_interaction_house_claim: "Cannot press a House Artifact claim against a member of the same House without a personal claim!"
   challenge_artifact_interaction_house_claim: "$demand_artifact_interaction_house_claim$"

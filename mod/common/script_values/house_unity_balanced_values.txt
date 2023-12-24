@@ -199,7 +199,28 @@ artifact_war_prestige_cost = {
 
 artifact_war_prestige_cost_dynasty = {
 	value = artifact_war_prestige_cost
-	multiply = 2
+	multiply = 1.5
 }
 
 # TODO: Add artifact war piety cost for relic if both sides may benefit from it
+
+reclaim_relic_war_prestige_cost = {
+	value = 0
+	if = {
+		limit = { 
+			OR = {
+				rarity = common
+				rarity = masterwork
+			}
+		}
+		add = miniscule_prestige_value
+	}
+	else_if = {
+		limit = { rarity = famed }
+		add = minor_prestige_value
+	}
+	else = {
+		add = medium_prestige_value
+	}
+	divide = 1.5
+}
