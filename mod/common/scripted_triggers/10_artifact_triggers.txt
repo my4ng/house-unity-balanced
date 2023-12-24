@@ -3,15 +3,10 @@
 		is_ruler = yes
 		target_is_same_character_or_above = scope:defender
 	}
-	trigger_if ={
-		limit = {
-			scope:attacker = { is_ai = yes }
-		}
-		NOT = { has_variable = cursed_artifact }
-		OR = {
-			rarity = famed
-			rarity = illustrious
-		}
-		scope:attacker = { can_benefit_from_artifact = prev } 
+	scope:attacker = { can_benefit_from_artifact = prev }
+	OR = {
+		rarity = famed
+		rarity = illustrious
 	}
+	NOT = { has_variable = cursed_artifact }
 }

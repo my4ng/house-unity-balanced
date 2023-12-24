@@ -45,47 +45,39 @@
 				desc = CB_BASE_COST
 			}
 
-			any_personal_claimed_artifact = {
-				if = {
-					limit = {
-						artifact_war_claimable_artifact_trigger = yes
+			scope:attacker = {
+				add = {
+					every_personal_claimed_artifact = {
+						limit = { artifact_war_claimable_artifact_trigger = yes }
+						add = artifact_war_prestige_cost
 					}
-					add = {
-						value = artifact_war_prestige_cost
-						desc = artifact_war_prestige_cost_personal.desc
-					}
+					desc = CB_ARTIFACT_WAR_PRESTIGE_PERSONAL
 				}
 
-			}
-		
-			any_house_claimed_artifact = {
-				if = {
-					limit = {
-						artifact_war_claimable_artifact_trigger = yes
-						scope:attacker = {
-							NOT = {
-								has_personal_artifact_claim = prev
+				house ?= {
+					add = {
+						every_house_claimed_artifact = {
+							limit = { 
+								artifact_war_claimable_artifact_trigger = yes
+								NOT = { 
+									scope:attacker = { has_personal_artifact_claim = prev }
+								}
+							}
+							if = {
+								limit = {
+									# Additional prestige cost for any house claimed artifact
+									# from the same dynasty without personal claim
+									# Note: not possible to be in the same house since checked false already
+									exists = artifact_owner.dynasty
+									scope:attacker.dynasty = artifact_owner.dynasty	
+								}
+								add = artifact_war_prestige_cost_dynasty
+							}
+							else = {
+								add = artifact_war_prestige_cost
 							}
 						}
-						if = {
-							limit = {
-								# Additional prestige cost for any house claimed artifact
-								# from the same dynasty without personal claim
-								# Note: not possible to be in the same house since checked false already
-								exists = artifact_owner.dynasty
-								scope:attacker.dynasty = artifact_owner.dynasty
-							}
-							add = {
-								value = artifact_war_prestige_cost_dynasty
-								desc = artifact_war_prestige_cost_house_dynasty.desc
-							}
-						}
-						else = {
-							add = {
-								value = artifact_war_prestige_cost
-								desc = artifact_war_prestige_cost_house.desc
-							}
-						}
+						desc = CB_ARTIFACT_WAR_PRESTIGE_HOUSE
 					}
 				}
 			}

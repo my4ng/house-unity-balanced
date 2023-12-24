@@ -1,7 +1,6 @@
 ﻿l_english:
-  artifact_war_prestige_cost_personal.desc: "Personal Claim: [artifact.GetName] owned by [artifact_owner.GetFullName]"
-  artifact_war_prestige_cost_house.desc: "House Claim: [artifact.GetName] owned by [artifact_owner.GetFullName]"
-  artifact_war_prestige_cost_house_dynasty.desc: "House Claim against dynastic member: [artifact.GetName] owned by [artifact_owner.GetFullName]"
+  CB_ARTIFACT_WAR_PRESTIGE_PERSONAL: "Personal Claim"
+  CB_ARTIFACT_WAR_PRESTIGE_HOUSE: "House Claim"
 
   demand_artifact_interaction_house_claim: "Cannot press a House Artifact claim against a member of the same House without a personal claim!"
   challenge_artifact_interaction_house_claim: "$demand_artifact_interaction_house_claim$"

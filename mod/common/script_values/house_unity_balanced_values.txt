@@ -199,7 +199,7 @@ artifact_war_prestige_cost = {
 
 artifact_war_prestige_cost_dynasty = {
 	value = artifact_war_prestige_cost
-	multiply = 1.5
+	multiply = 2
 }
 
 # TODO: Add artifact war piety cost for relic if both sides may benefit from it
