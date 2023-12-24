@@ -1,0 +1,13 @@
+﻿artifact_war_owner_eligible_trigger = {
+	artifact_owner = {
+		trigger_if = {
+			# Lowborn or not the same House
+			limit = {
+				exists = house
+			}
+			NOT = {
+				house = scope:attacker.house
+			}
+		}
+	}
+}

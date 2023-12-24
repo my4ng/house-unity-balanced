@@ -13,20 +13,11 @@
 				any_personal_claimed_artifact = {
 					artifact_war_claimable_artifact_trigger = yes
 				}
+				# TODO: Only House Head allowed to press for house claimed artifacts
 				house ?= {
 					any_house_claimed_artifact = {
 						artifact_war_claimable_artifact_trigger = yes
-						artifact_owner = {
-							trigger_if = {
-								# Lowborn or not the same House
-								limit = {
-									exists = house
-								}
-								NOT = {
-									house = scope:attacker.house
-								}
-							}
-						}
+						artifact_war_owner_eligible_trigger = yes
 					}
 				}
 			}
@@ -79,6 +70,7 @@
 						every_house_claimed_artifact = {
 							limit = { 
 								artifact_war_claimable_artifact_trigger = yes
+								artifact_war_owner_eligible_trigger = yes
 								NOT = { 
 									scope:attacker = { has_personal_artifact_claim = prev }
 								}
@@ -87,7 +79,6 @@
 								limit = {
 									# Additional prestige cost for any house claimed artifact
 									# from the same dynasty without personal claim
-									# Note: not possible to be in the same house since checked false already
 									exists = artifact_owner.dynasty
 									scope:attacker.dynasty = artifact_owner.dynasty	
 								}
@@ -101,7 +92,7 @@
 					}
 				}
 			}
-			
+
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -139,17 +130,7 @@
 				every_house_claimed_artifact = {
 					limit = {
 						artifact_war_claimable_artifact_trigger = yes
-						artifact_owner = {
-							trigger_if = {
-								# Lowborn or not the same House
-								limit = {
-									exists = house
-								}
-								NOT = {
-									house = scope:attacker.house
-								}
-							}
-						}
+						artifact_war_owner_eligible_trigger = yes
 					}
 					add_to_list = transferred_artifacts
 				}
@@ -172,9 +153,7 @@
 				scope:previous_owner = {
 					if = {
 						limit = {
-							NOT = {
-								has_personal_artifact_claim = prev
-							}
+							NOT = { has_personal_artifact_claim = prev }
 						}
 						add_personal_artifact_claim = prev
 					}
@@ -268,17 +247,7 @@
 				every_house_claimed_artifact = {
 					limit = {
 						artifact_war_claimable_artifact_trigger = yes
-						artifact_owner = {
-							trigger_if = {
-								# Lowborn or not the same House
-								limit = {
-									exists = house
-								}
-								NOT = {
-									house = scope:attacker.house
-								}
-							}
-						}
+						artifact_war_owner_eligible_trigger = yes
 					}
 					scope:attacker.house = {
 						remove_house_artifact_claim = prev
@@ -326,31 +295,15 @@
 	}
 	
 	should_invalidate = {
-		NOT = {
-			scope:attacker = {
-				OR = {
-					any_personal_claimed_artifact = {
-						artifact_owner = {
-							is_ruler = yes
-							target_is_same_character_or_above = scope:defender
-						}
-					}
-					house ?= {
-						any_house_claimed_artifact = {
-							artifact_owner = {
-								trigger_if = {
-									# Lowborn or not the same House
-									limit = {
-										exists = house
-									}
-									NOT = {
-										house = scope:attacker.house
-									}
-								}
-								is_ruler = yes
-								target_is_same_character_or_above = scope:defender
-							}
-						}
+		scope:attacker = {
+			NOR = {
+				any_personal_claimed_artifact = {
+					artifact_war_claimable_artifact_trigger = yes
+				}
+				house ?= {
+					any_house_claimed_artifact = {
+						artifact_war_claimable_artifact_trigger = yes
+						artifact_war_owner_eligible_trigger = yes
 					}
 				}
 			}
