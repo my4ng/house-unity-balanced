@@ -218,7 +218,13 @@ gift_artifact_interaction = {
 							limit = { any_personal_claimed_artifact = { this = scope:target } }
 							show_as_tooltip = { remove_personal_artifact_claim = scope:target }
 						}
-						else = { show_as_tooltip = { remove_house_artifact_claim = scope:target } }
+						else = { 
+							show_as_tooltip = { 
+								house ?= {
+									remove_house_artifact_claim = scope:target
+								}
+							} 
+						}
 					}
 				}
 				
@@ -1095,7 +1101,7 @@ gift_artifact_interaction = {
 
 		modifier = {
 			factor = 0
-			scope:target = { exists = var:relic_religion}
+			scope:target = { exists = var:relic_religion }
 			scope:actor = {
 				has_religion = scope:target.var:relic_religion
 			}
@@ -3686,7 +3692,6 @@ destroy_artifact_interaction = {
 	icon = artifact
 	category = interaction_category_friendly
 	desc = destroy_artifact_interaction_desc
-	icon = artifact
 
 	target_type = artifact
 	target_filter = actor_artifacts

@@ -1,0 +1,75 @@
+﻿###################################
+# Become a Clan Government
+###################################
+fp3_become_clan_government_decision = {
+	picture = "gfx/interface/illustrations/decisions/fp3/friendly.dds"
+
+	desc = fp3_become_clan_government_decision_desc
+	selection_tooltip = fp3_become_clan_government_decision_tooltip
+
+	ai_check_interval = 64
+
+	cost = { prestige = major_prestige_value }
+
+	is_shown = {
+		has_fp3_dlc_trigger = yes
+		# You are Feudal
+		government_has_flag = government_is_feudal
+		# Has a House and is not House Head
+		exists = house
+		NOT = { house.house_head = root }
+		# Religion is Islam (Clan)
+		religion = religion:islam_religion
+		# House head is Clan
+		house.house_head = { government_has_flag = government_is_clan }
+	}
+
+	is_valid = {
+		# You are Feudal
+		government_has_flag = government_is_feudal
+		# Religion is Islam (Clan)
+		religion = religion:islam_religion
+		# House head is Clan
+		custom_tooltip = {
+			text = fp3_become_clan_government_decision_house_head_tt
+			house.house_head = { government_has_flag = government_is_clan }
+		}
+	}
+
+	effect = {
+		show_as_tooltip ={
+			change_government = clan_government
+			# Increase unity, uses this effect since both chars are not clan when script is evaluated
+			house = {
+				apply_clan_unity_interaction_effect = {
+					CHARACTER = root
+					TARGET = root.house.house_head
+					DESC = clan_unity_adopt_clan.desc
+					VALUE = medium_unity_gain
+					VALUE_REVERSED = no
+				}
+			}
+		}
+		trigger_event = fp3_misc_decisions.0051
+	}
+
+	ai_will_do = {
+		base = -25
+		# More likely if Clan preferred culture
+		modifier = {
+			add = 10
+			culture = {
+				OR = {
+					has_cultural_pillar = heritage_arabic
+					has_cultural_pillar = heritage_iranian
+					has_cultural_pillar = heritage_turkic
+				}
+			}
+		}
+		# More likely if a fan of House Head
+		opinion_modifier = {
+			opinion_target = house.house_head
+			multiplier = 0.5
+		}
+	}
+}

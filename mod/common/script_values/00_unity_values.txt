@@ -21,8 +21,8 @@ number_of_landed_house_unity_members_value = {
 			is_landed = yes
 		}
 		add = 1
-		max = 10
 	}
+	max = 10
 	desc = MODIFIER_DEFINITION_MAIN_DESC_HOUSE_UNITY
 }
 
