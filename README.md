@@ -16,17 +16,21 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
   - Adjust House Unity/Opinion changes based on Artifact quality and hostility of interaction
   - Ensure House Unity change only occurs if the Artifact changes hand
   - Add event for failed steal Artifact scheme target
+- Artifact War and Reclaim Relic War improvements
+  - Adjust prestige cost based on Artifact quality
+  - Change Artifact history and claim from defender to Artifact owner
 - Tweaked character interaction (e.g. lover, rival) House Unity changes
 - Improved House Unity history descriptions
 
 ## Roadmap
 
-- [x] Dynamic scaling
+- [x] Dynamic Scaling
 - [x] Artifact Interactions
+- [x] Artifact Wars
 - [x] Character Interactions
 - [ ] Diplomatic Interactions
 - [ ] Intrigue Schemes
-- [ ] Cadet Branch requirements
+- [ ] Cadet Branch Requirements
 - [x] Thumbnail
 - [ ] Steam Workshop
 
