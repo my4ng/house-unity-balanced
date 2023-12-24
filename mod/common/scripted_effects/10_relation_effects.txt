@@ -1,0 +1,171 @@
+﻿progress_towards_friend_effect = {
+	#If potential friend, set friend!
+	if = {
+		limit = {
+			has_relation_potential_friend = $CHARACTER$
+			can_set_relation_friend_trigger = { CHARACTER = $CHARACTER$ }
+		}
+		if = {
+			limit = {
+				exists = scope:relationship_reason_involved_character
+				exists = scope:relationship_reason_province
+			}
+			set_relation_friend = { 
+				reason = $REASON$ 
+				target = $CHARACTER$ 
+				involved_character = scope:relationship_reason_involved_character 
+				province = scope:relationship_reason_province 
+			}
+			if = {
+				limit = {
+					this.involved_activity ?= {
+						has_activity_type = activity_playdate
+					}
+				}
+				this.involved_activity ?= {
+					add_activity_log_entry = {
+						key = activity_generic_friend_log
+						tags = { good }
+						score = 10
+						character = prev
+						target = {
+							prev = { $CHARACTER$ }
+						}
+					}
+				} #TODO make all activities use this without creating duplicate entries
+			}
+		}
+		else_if = {
+			limit = {
+				exists = scope:relationship_reason_province
+			}
+			set_relation_friend = { 
+				reason = $REASON$ 
+				target = $CHARACTER$ 
+				province = scope:relationship_reason_province 
+			}
+			if = {
+				limit = {
+					this.involved_activity ?= {
+						has_activity_type = activity_playdate
+					}
+				}
+				this.involved_activity ?= {
+					add_activity_log_entry = {
+						key = activity_generic_friend_log
+						tags = { good }
+						score = 10
+						character = prev
+						target = {
+							prev = { $CHARACTER$ }
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				exists = scope:relationship_reason_involved_character
+			}
+			set_relation_friend = { 
+				reason = $REASON$ 
+				target = $CHARACTER$ 
+				involved_character = scope:relationship_reason_involved_character 
+			}
+			if = {
+				limit = {
+					this.involved_activity ?= {
+						has_activity_type = activity_playdate
+					}
+				}
+				this.involved_activity ?= {
+					add_activity_log_entry = {
+						key = activity_generic_friend_log
+						tags = { good }
+						score = 10
+						character = prev
+						target = {
+							prev = { $CHARACTER$ }
+						}
+					}
+				}
+			}
+		}
+		else = {
+			set_relation_friend = { 
+				reason = $REASON$ 
+				target = $CHARACTER$ 
+			}
+			if = {
+				limit = {
+					this.involved_activity ?= {
+						has_activity_type = activity_playdate
+					}
+				}
+				this.involved_activity ?= {
+					add_activity_log_entry = {
+						key = activity_generic_friend_log
+						tags = { good }
+						score = 10
+						character = prev
+						target = {
+							prev = { $CHARACTER$ }
+						}
+					}
+				}
+			}
+		}
+		# Complete activity intent if relevant
+		if = {
+			limit = {
+				exists = involved_activity
+				has_activity_intent = befriend_attendee_intent
+				intent_target ?= $CHARACTER$
+				intent_target.involved_activity ?= $CHARACTER$.involved_activity
+			}
+			save_scope_as = intent_completer
+			send_interface_toast = {
+				title = activity_intent_complete_toast
+				left_icon = $CHARACTER$ 
+				complete_activity_intent = yes
+			}
+		}
+	}
+	# If not...
+	else = {
+		# ... set potential relation if we're not already friends!
+		if = {
+			limit = {
+				can_set_relation_potential_friend_trigger = { CHARACTER = $CHARACTER$ }
+				$CHARACTER$ = {
+					opinion = {
+						target = prev
+						value >= -25
+					}
+				}
+			}
+			set_relation_potential_friend = $CHARACTER$
+		}
+
+		# ... add opinion if we should!
+		save_temporary_scope_value_as = {
+			name = friend_opinion
+			value = $OPINION$
+		}
+		if = {
+			limit = { NOT = { scope:friend_opinion = 0 } }
+			reverse_add_opinion = {
+				target = $CHARACTER$
+				modifier = friendliness_opinion
+				opinion = scope:friend_opinion
+			}
+			hidden_effect = {
+				add_opinion = {
+					target = $CHARACTER$
+					modifier = friendliness_opinion
+					opinion = scope:friend_opinion
+				}
+			}
+		}
+	}
+}

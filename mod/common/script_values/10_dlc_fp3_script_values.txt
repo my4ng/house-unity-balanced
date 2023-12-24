@@ -1,0 +1,12 @@
+﻿rescue_house_members_cb_house_unity_gain = {
+	scope:defender = {
+		every_prisoner = {
+			limit = { house ?= scope:attacker.house }
+			house = {
+				add = medium_unity_gain
+			}
+		}
+	}
+
+	max = 20
+}

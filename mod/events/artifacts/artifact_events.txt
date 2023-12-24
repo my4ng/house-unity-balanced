@@ -3809,7 +3809,7 @@ artifact.6000 = {
 		}
 		modifier = {
 			side_primary_participant = {
-				exists = side_primary_participant.dynasty
+				exists = dynasty
 				dynasty = { has_dynasty_perk = fp1_pillage_legacy_4 }
 			}
 			add = 1
