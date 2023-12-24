@@ -36,6 +36,26 @@
 	on_declaration = {
 		on_declared_war = yes
 	}
+
+	# cost = {
+	# 	prestige = {
+	# 		value = 0
+	# 		add = {
+	# 			value = major_prestige_value
+	# 			desc = CB_BASE_COST
+	# 		}
+	
+	# 		scope:attacker = {
+	# 			every_personal_claimed_artifact = {
+	# 				limit = { artifact_war_claimable_artifact_trigger = yes }
+	# 				add = {
+	# 					value = artifact_war_prestige_cost
+	# 					desc = CB_ARTIFACT_WAR_PRESTIGE_PERSONAL
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 	
 	cost = {
 		prestige = {
@@ -81,7 +101,7 @@
 					}
 				}
 			}
-
+			
 			multiply = common_cb_prestige_cost_multiplier
 		}
 	}
@@ -134,25 +154,29 @@
 					add_to_list = transferred_artifacts
 				}
 			}
+			
 			every_in_list = {
 				list = transferred_artifacts
-				save_scope_as = artifact
+				artifact_owner = {
+					save_temporary_scope_as = previous_owner
+				}
 				set_owner = {
 					target = scope:attacker
 					history = {
 						type = conquest
-						actor = scope:defender
+						actor = scope:defender # War against the defender in artifact history
 						recipient = scope:attacker
 					}
 				}
-				scope:defender = {
+				# Change the personal claim from defender to artifact_owner
+				scope:previous_owner = {
 					if = {
 						limit = {
 							NOT = {
-								has_personal_artifact_claim = scope:artifact
+								has_personal_artifact_claim = prev
 							}
 						}
-						add_personal_artifact_claim = scope:artifact
+						add_personal_artifact_claim = prev
 					}
 				}
 			}
@@ -314,15 +338,14 @@
 					house ?= {
 						any_house_claimed_artifact = {
 							artifact_owner = {
-								OR = {
-									# Not the same House
-									house ?= {
-										NOT = {
-											house = scope:attacker.house
-										}
+								trigger_if = {
+									# Lowborn or not the same House
+									limit = {
+										exists = house
 									}
-									# Defender is lowborn
-									is_lowborn = yes
+									NOT = {
+										house = scope:attacker.house
+									}
 								}
 								is_ruler = yes
 								target_is_same_character_or_above = scope:defender

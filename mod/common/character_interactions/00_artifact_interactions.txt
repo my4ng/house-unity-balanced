@@ -148,6 +148,8 @@ gift_artifact_interaction = {
 					}
 				}
 			}
+		}
+		else_if = {
 			limit = {
 				fp3_struggle_involves_one_supporter_and_one_detractor = {
 					FIRST = scope:actor
