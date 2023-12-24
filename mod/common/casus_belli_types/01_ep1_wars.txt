@@ -149,7 +149,7 @@
 					target = scope:attacker
 					history = {
 						type = conquest
-						actor = scope:defender # War against the defender in artifact history
+						actor = scope:previous_owner
 						recipient = scope:attacker
 					}
 				}
@@ -431,8 +431,8 @@ reclaim_relic_artifact_war = {
 										relic_war_valid_struggle_artefact_trigger = yes
 									}
 								}
+								add = reclaim_relic_war_prestige_cost
 							}
-							add = reclaim_relic_war_prestige_cost
 						}
 					}
 					desc = CB_RECLAIM_RELIC_WAR_PRESTIGE
@@ -504,7 +504,7 @@ reclaim_relic_artifact_war = {
 				target = scope:attacker
 				history = {
 					type = conquest
-					actor = scope:defender
+					actor = scope:previous_owner
 					recipient = scope:attacker
 				}
 			}
