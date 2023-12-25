@@ -1,0 +1,52 @@
+﻿apply_clan_unity_interaction_effect = {
+	# Save scopes for localisation
+	$CHARACTER$ = { save_scope_as = unity_character }
+	$TARGET$ = { save_scope_as = unity_target }
+
+	$CHARACTER$.house = {
+		save_scope_as = character_house
+
+		add_unity_value = {
+			value = {
+				value = $VALUE$
+				if = { # House heads have a larger impact on unity
+					limit = { 
+						# Check if EITHER character is the house head
+						OR = {
+							house_head = $CHARACTER$
+							house_head = $TARGET$
+						}
+					}
+					multiply = unity_house_head_multiplier_value
+				}
+				if = {
+					limit = { $VALUE_REVERSED$ = yes }
+					multiply = -1
+				}
+			}
+			character = $CHARACTER$
+			desc = $DESC$
+		}
+
+		# Moved inside the house & changed to medium
+		# Notify human players if they are not involved!
+		if = {
+			limit = {
+				trigger_if = {
+					limit = { $VALUE$ >= 0 }
+					$VALUE$ >= medium_unity_gain
+				}
+				trigger_else = {
+					# Changed to loss
+					$VALUE$ <= mmedium_unity_loss
+				}
+			}
+			# Notify human players if they are not involved!
+			notify_players_about_unity_change_effect = {
+				CHARACTER = $CHARACTER$
+				TARGET = $TARGET$
+				DESC = $DESC$
+			}
+		}
+	}
+}
