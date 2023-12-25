@@ -3,7 +3,13 @@
 		is_ruler = yes
 		target_is_same_character_or_above = scope:defender
 	}
-	scope:attacker = { can_benefit_from_artifact = prev }
+	scope:attacker = { 
+		# Error suppression
+		custom_tooltip = {
+			text = SCOPE_EMPTY
+			can_benefit_from_artifact = prev
+		}
+	}
 	OR = {
 		rarity = famed
 		rarity = illustrious

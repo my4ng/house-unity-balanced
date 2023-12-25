@@ -38,7 +38,7 @@
 				}
 				trigger_else = {
 					# Changed to loss
-					$VALUE$ <= mmedium_unity_loss
+					$VALUE$ <= medium_unity_loss
 				}
 			}
 			# Notify human players if they are not involved!
