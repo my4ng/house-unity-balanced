@@ -2,7 +2,7 @@
 
 [h1] Introdution [/h1]
 
-Ever thought it is a bit ridiculous how House Unity changes the same amount in a 3-member House and a 300-member House? Or how demanding the Aged Cheese and the Ark of the Covenant decrease House Unity and opinion by the same amount [i] (don't give me wrong, cheese is great) [/i?]? Well this mod gets you covered.
+Ever thought it is a bit ridiculous how House Unity changes the same amount in a 3-member House and a 300-member House? Or how demanding the Aged Cheese and the Ark of the Covenant decrease House Unity and opinion by the same amount [i] (don't give me wrong, cheese is great)[/i]? Well this mod gets you covered.
 
 At its core, it uses dynamic scaling to adjust any House Unity changes depending on the number of landed rulers in that House (capped to 25%). For a more detailed overview of all its features, see the list below. If you would like to suggest any new features, report any bugs (including incompatibility with other mods) or provide localization, please use either the comment section or preferably [url=https://github.com/my4ng/house-unity-balanced] GitHub Issue [/url].
 
@@ -13,13 +13,17 @@ At its core, it uses dynamic scaling to adjust any House Unity changes depending
 [list]
 [*]Dynamic House Unity scaling
 [*]Artifact interaction improvements
+[list]
   [*]Disallow demand/challenge for Artifact against a House member without a personal claim
   [*]Adjust House Unity/Opinion changes based on Artifact quality and hostility of interaction
   [*]Ensure House Unity change only occurs if the Artifact changes hand
   [*]Add event for failed steal Artifact scheme target
+[/list]
 [*]Artifact War and Reclaim Relic War improvements
+[list]
   [*]Adjust prestige cost based on Artifact quality
   [*]Change Artifact history and claim from defender to Artifact owner
+[/list]
 [*]Tweaked character interaction (e.g. lover, rival) House Unity changes
 [*]Improved House Unity history descriptions
 [/list]
@@ -30,6 +34,6 @@ At its core, it uses dynamic scaling to adjust any House Unity changes depending
 
 This mod modifies a considerable number of files, most importantly [b] 00_unity_values.txt [/b] in order to enable dynamic House Unity Scaling. As a result, any reference to [b] *_unity_value/gain/loss [/b] by itself and outside of effects such as [b] apply_clan_unity_interaction_effect [/b] must be wrapped in the appropriate House scope. It should be placed above other mods that use the House Unity mechanic in the load order.
 
-[h1] GitHub [/h1]
+[h1] GitHub Repository [/h1]
 
-[url=https://github.com/my4ng/house-unity-balanced][img]https://commons.wikimedia.org/wiki/File:GitHub_Invertocat_Logo.svg[/img][/url]
+[url=https://github.com/my4ng/house-unity-balanced][img]https://i.imgur.com/i7stvtC.png[/img][/url]
