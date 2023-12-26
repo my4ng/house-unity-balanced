@@ -202,8 +202,6 @@ artifact_war_prestige_cost_dynasty = {
 	multiply = 1.5
 }
 
-# TODO: Add artifact war piety cost for relic if both sides may benefit from it
-
 reclaim_relic_war_prestige_cost = {
 	value = 0
 	if = {
@@ -223,4 +221,26 @@ reclaim_relic_war_prestige_cost = {
 		add = medium_prestige_value
 	}
 	divide = 1.5
+}
+
+artifact_interaction_modifier_value = {
+	value = 0
+	scope:target = {
+		if = {
+			limit = { rarity = common }
+			add = -5
+		}
+		else_if = {
+			limit = { rarity = masterwork }
+			add = -12.5
+		}
+		else_if = {
+			limit = { rarity = famed }
+			add = -25
+		}
+		else_if = {
+			limit = { rarity = illustrious }
+			add = -50
+		}
+	}
 }

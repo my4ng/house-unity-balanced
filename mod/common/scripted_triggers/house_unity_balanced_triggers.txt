@@ -22,6 +22,16 @@ artifact_relic_hof_trigger = {
 	scope:actor.faith.religious_head ?= scope:recipient
 }
 
+artifact_relic_hof_reverse_trigger = {
+	scope:target = {
+		has_variable = relic
+	}
+	scope:actor = {
+		can_benefit_from_artifact = scope:target
+	}
+	scope:recipient.faith.religious_head ?= scope:actor
+}
+
 artifact_dynasty_banner_dynast_trigger = {
 	exists = scope:target.var:banner_dynasty
 	scope:target.var:banner_dynasty.dynast ?= scope:recipient

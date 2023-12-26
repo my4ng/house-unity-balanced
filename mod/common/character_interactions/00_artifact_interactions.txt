@@ -1276,8 +1276,10 @@ demand_artifact_interaction = {
 			subject = scope:actor
 			object = scope:recipient
 			scope:hook = yes
-			# TODO: Does not work on HoF
 			scope:actor = { has_strong_hook = scope:recipient }
+			# Does NOT work with relic HoF or Dynasty Banner Dynast
+			artifact_relic_hof_trigger = no
+			artifact_dynasty_banner_dynast_trigger = no
 		}
 	}
 	
@@ -1309,6 +1311,7 @@ demand_artifact_interaction = {
 
 		artifact_interaction_modifier = yes
 
+		# TODO: Implement better than binary comparisons
 		modifier = {
 			add = 70
 			scope:actor.max_military_strength > scope:recipient.max_military_strength
@@ -3207,12 +3210,9 @@ buy_artifact_claim = {
 					NOT = { has_personal_artifact_claim = scope:target }
 				}
 			}
-			# TODO: Change to `artifact_dynasty_banner_dynast_trigger`
 			custom_description = {
-				text = buy_artifact_interaction_pope_hat
-				scope:target = {
-					NOT = { has_variable = pope_hat }
-				}
+				text = buy_artifact_interaction_relic
+				NOT = { artifact_relic_hof_trigger = yes }
 			}
 			custom_description = {
 				text = buy_artifact_interaction_dynasty_banner

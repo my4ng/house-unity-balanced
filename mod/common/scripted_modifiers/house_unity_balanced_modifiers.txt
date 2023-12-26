@@ -14,19 +14,26 @@
 		scope:target = { rarity = illustrious }
 		desc = ARTIFACT_ILLUSTRIOUS_REASON
 	}
-	# TODO: Improve to be 0.5x rarity modifier
 	modifier = {
-		add = -50
+		add = artifact_interaction_modifier_value
 		scope:target = { is_unique = yes }
 		desc = ARTIFACT_UNIQUE_REASON
 	}
-	# TODO: Add reverse modifier
 	modifier = {
-		add = -100
+		add = artifact_interaction_modifier_value
 		artifact_relic_hof_trigger = yes
 		desc = ARTIFACT_RELIC_HOF_REASON
 	}
-	# TODO: Add reverse modifier
+	modifier = {
+		add = {
+			value = 0
+			subtract = artifact_interaction_modifier_value
+			multiply = 2
+		}
+		artifact_relic_hof_reverse_trigger = yes
+		desc = ARTIFACT_RELIC_HOF_REVERSE_REASON
+	}
+	# Reverse should use Request Dynasty Banner artifact interaction
 	modifier = {
 		add = -100
 		artifact_dynasty_banner_dynast_trigger = yes

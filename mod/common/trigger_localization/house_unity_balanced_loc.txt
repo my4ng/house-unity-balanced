@@ -18,8 +18,8 @@ buy_character_interaction_no_claim = {
 	third_not = buy_character_interaction_no_claim
 }
 
-buy_artifact_interaction_pope_hat = {
-	third_not = buy_artifact_interaction_pope_hat
+buy_artifact_interaction_relic = {
+	third_not = buy_artifact_interaction_relic
 }
 
 buy_artifact_interaction_dynasty_banner = {
