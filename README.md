@@ -15,6 +15,7 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 - Artifact interaction improvements
   - Disallow demand/challenge for Artifact against a House member without a personal claim
   - Adjust House Unity/Opinion changes based on Artifact quality and hostility of interaction
+  - Add additional AI acceptance modifiers for demand artifact
   - Ensure House Unity change only occurs if the Artifact changes hand
   - Add event for failed steal Artifact scheme target
 - Artifact War and Reclaim Relic War improvements

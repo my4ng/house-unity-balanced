@@ -17,6 +17,7 @@ At its core, it uses dynamic scaling to adjust any House Unity changes depending
 [list]
   [*]Disallow demand/challenge for Artifact against a House member without a personal claim
   [*]Adjust House Unity/Opinion changes based on Artifact quality and hostility of interaction
+  [*]Add additional AI acceptance modifiers for demand artifact
   [*]Ensure House Unity change only occurs if the Artifact changes hand
   [*]Add event for failed steal Artifact scheme target
 [/list]
