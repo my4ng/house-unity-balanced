@@ -12,6 +12,7 @@ At its core, it uses dynamic scaling to adjust any House Unity changes depending
 
 [list]
 [*]Dynamic House Unity scaling
+[*]Applied House head modifier for either side of interaction
 [*]Artifact interaction improvements
 [list]
   [*]Disallow demand/challenge for Artifact against a House member without a personal claim
