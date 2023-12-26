@@ -1,0 +1,3 @@
+﻿l_english:
+  INCREASE_UNITY_DESC: "Wants to increase [house_unity|E]: $VALUE|=+0$"
+  DECREASE_UNITY_DESC: "Wants to decrease [house_unity|E]: $VALUE|=+0$"

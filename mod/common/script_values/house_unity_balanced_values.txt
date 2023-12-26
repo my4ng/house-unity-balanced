@@ -150,7 +150,7 @@ buy_artifact_claim_cost_piety = {
 			add = major_buy_claim_piety_value
 		}
 		else_if = {
-			limit = { rarity = masterwork }
+			limit = { rarity = illustrious }
 			add = massive_buy_claim_piety_value
 		}
 	}
@@ -172,7 +172,7 @@ buy_artifact_claim_cost_prestige = {
 			add = major_buy_claim_prestige_value
 		}
 		else_if = {
-			limit = { rarity = masterwork }
+			limit = { rarity = illustrious }
 			add = massive_buy_claim_prestige_value
 		}
 		if = {

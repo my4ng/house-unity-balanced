@@ -11,3 +11,18 @@
 		}
 	}
 }
+
+artifact_relic_hof_trigger = {
+	scope:target = {
+		has_variable = relic
+	}
+	scope:recipient = {
+		can_benefit_from_artifact = scope:target
+	}
+	scope:actor.faith.religious_head ?= scope:recipient
+}
+
+artifact_dynasty_banner_dynast_trigger = {
+	exists = scope:target.var:banner_dynasty
+	scope:target.var:banner_dynasty.dynast ?= scope:recipient
+}
