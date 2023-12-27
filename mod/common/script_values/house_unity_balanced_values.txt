@@ -258,31 +258,22 @@ relative_military_strength_value = {
 # Pseudocode:
 # let x = (a + 1)/(b + 1), y, z
 # if x >= 1:
-# 	y = x * x
+# 	y = x
 # else:
-#   y = 1 / (x * x)
-# z = min((y - 1) * 20, 100)
-# if x < 1:
-#	z = z * -1
+#   y = 1 / x
+# z = min((y - 1) * 40, 80)
 # ret z
 max_military_strength_modifier_value = {
 	value = 1
 	if = {
 		limit = { relative_military_strength_value < 1 }
 		divide = relative_military_strength_value
-		divide = relative_military_strength_value
 	}
 	else = {
-		multiply = relative_military_strength_value
 		multiply = relative_military_strength_value
 	}
 
 	subtract = 1
-	multiply = 25
-	max = 100
-
-	if = {
-		limit = { relative_military_strength_value < 1 }
-		multiply = -1
-	}
+	multiply = 40
+	max = 80
 }

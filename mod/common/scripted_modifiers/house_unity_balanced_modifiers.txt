@@ -49,6 +49,40 @@
 max_military_strength_modifier = {
 	modifier = {
 		add = max_military_strength_modifier_value
-		desc = ARTIFACT_MILITARY_STRENGTH_REASON
+		relative_military_strength_value >= 1
+		desc = ARTIFACT_MILITARY_STRONGER_REASON
+	}
+
+	modifier = {
+		add = {
+			value = 0
+			subtract = max_military_strength_modifier_value
+		}
+		relative_military_strength_value < 1
+		desc = ARTIFACT_MILITARY_WEAKER_REASON
+	}
+}
+
+dread_modifier = {
+	modifier = {
+		add = 25
+		scope:recipient = {
+			has_dread_level_towards = {
+				target = scope:actor
+				level = 1
+			}
+		}
+		desc = ARTIFACT_INTIMIDATED_REASON
+	}
+
+	modifier = {
+		add = 50
+		scope:recipient = {
+			has_dread_level_towards = {
+				target = scope:actor
+				level = 2
+			}
+		}
+		desc = ARTIFACT_TERRIFIED_REASON
 	}
 }

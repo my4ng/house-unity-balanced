@@ -13,7 +13,8 @@
   ARTIFACT_RELIC_HOF_REASON: "[recipient.GetShortUINameNoTooltip] is your [head_of_faith|E]\n    and this is considered a holy #V Relic#!\: $VALUE|=+0$"
   ARTIFACT_RELIC_HOF_REVERSE_REASON: "You are [recipient.GetShortUINamePossessiveNoTooltip] [head_of_faith|E]\n    and this is considered a holy #V Relic#!\: $VALUE|=+0$"
   ARTFIACT_DYNASTY_BANNER_DYNAST_REASON: "[recipient.GetShortUINameNoTooltip] is your [dynast|E]\n    and this is the #V Dynasty Banner#!\: $VALUE|=+0$"
-  ARTIFACT_MILITARY_STRENGTH_REASON: "Relative military strength between you and [recipient.GetShortUINameNoTooltip]: $VALUE|=+0$"
+  ARTIFACT_INTIMIDATED_REASON: "[recipient.GetShortUINameNoTooltip] is [intimidated|E] by you: $VALUE|=+0$"
+  ARTIFACT_TERRIFIED_REASON: "[recipient.GetShortUINameNoTooltip] is [cowed|E] by you: $VALUE|=+0$"
 
   demand_artifact_interaction_house_claim: "Cannot press a House Artifact claim against a member of the same House without a personal claim!"
   challenge_artifact_interaction_house_claim: "$demand_artifact_interaction_house_claim$"

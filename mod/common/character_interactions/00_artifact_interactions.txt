@@ -725,7 +725,7 @@ gift_artifact_interaction = {
 		}
 		# Unity modifiers
 		evaluate_action_increasing_house_unity = {
-			VALUE = 25
+			VALUE = 10
 		}
 	}
 	
@@ -1037,7 +1037,7 @@ gift_artifact_interaction = {
 
 		# Unity modifiers
 		evaluate_action_increasing_house_unity = {
-			VALUE = 25
+			VALUE = 10
 		}
 		
 		modifier = {
@@ -1313,20 +1313,22 @@ demand_artifact_interaction = {
 
 		max_military_strength_modifier = yes
 
+		dread_modifier = yes
+
 		modifier = {
 			add = -50
 			scope:target = { can_be_claimed_by = scope:recipient }
 			desc = ARTIFACT_CLAIM_REASON
 		}
-		modifier = {
-			add = {
-				value = ai_boldness
-				multiply = -1
-				divide = 2
-			}
-			NOT = { ai_boldness = 0 }
-			desc = ARTIFACT_BOLDNESS_REASON
-		}
+		# modifier = {
+		# 	add = {
+		# 		value = ai_boldness
+		# 		multiply = -1
+		# 		divide = 2
+		# 	}
+		# 	NOT = { ai_boldness = 0 }
+		# 	desc = ARTIFACT_BOLDNESS_REASON
+		# }
 		modifier = {
 			add = -50
 			scope:actor = {
@@ -1342,7 +1344,7 @@ demand_artifact_interaction = {
 			desc = ARTIFACT_NEMESIS_REASON
 		}
 		modifier = {
-			add = 50
+			add = 25 # 50 -> 25
 			scope:recipient = {
 				target_is_liege_or_above = scope:actor
 			}
@@ -1354,9 +1356,9 @@ demand_artifact_interaction = {
 			desc = SCHEME_WEAK_HOOK_USED
 		}
 
-		# Unity modifiers 100 -> 25
+		# Unity modifiers 100 -> 10
 		evaluate_action_decreasing_house_unity = { 
-			VALUE = 25 
+			VALUE = 10
 		}
 	}
 	
@@ -1438,7 +1440,7 @@ demand_artifact_interaction = {
 
 		# Unity modifiers
 		evaluate_action_decreasing_house_unity = {
-				VALUE = 25
+				VALUE = 10
 			}
 
 		modifier = { # A Cowed character will never take this interaction
@@ -2100,9 +2102,9 @@ challenge_for_artifact_interaction = {
 			add = 30
 		}
 
-		# Unity modifiers 100 -> 25
+		# Unity modifiers 100 -> 10
 		evaluate_action_decreasing_house_unity = {
-			VALUE = 25
+			VALUE = 10
 		}
 	}
 
@@ -2221,7 +2223,7 @@ challenge_for_artifact_interaction = {
 
 		# Unity modifiers
 		evaluate_action_decreasing_house_unity = {
-			VALUE = 25
+			VALUE = 10
 		}
 
 
@@ -3355,7 +3357,7 @@ buy_artifact_claim = {
 
 		# Unity modifiers
 		evaluate_action_decreasing_house_unity = {
-			VALUE = 25
+			VALUE = 10
 		}
 
 		# Make it more likely for AI characters to buy claims if they have a royal court
@@ -3615,7 +3617,7 @@ demand_dynasty_banner_interaction = {
 		}
 		# Unity modifiers
 		evaluate_action_increasing_house_unity = {
-			VALUE = 25
+			VALUE = 10
 		}
 	}
 	
@@ -3660,7 +3662,7 @@ demand_dynasty_banner_interaction = {
 		}
 		# Unity modifiers
 		evaluate_action_increasing_house_unity = {
-			VALUE = 25
+			VALUE = 10
 		}
 		modifier = { # A Cowed character will never take this interaction
 			factor = 0
