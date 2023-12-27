@@ -1,5 +1,10 @@
 ﻿artifact_interaction_modifier = {
 	modifier = {
+		add = -10
+		scope:target = { rarity = common }
+		desc = ARTIFACT_COMMON_REASON
+	}
+	modifier = {
 		add = -25
 		scope:target = { rarity = masterwork }
 		desc = ARTIFACT_MASTERWORK_REASON
@@ -38,5 +43,12 @@
 		add = -100
 		artifact_dynasty_banner_dynast_trigger = yes
 		desc = ARTFIACT_DYNASTY_BANNER_DYNAST_REASON
+	}
+}
+
+max_military_strength_modifier = {
+	modifier = {
+		add = max_military_strength_modifier_value
+		desc = ARTIFACT_MILITARY_STRENGTH_REASON
 	}
 }

@@ -1311,17 +1311,8 @@ demand_artifact_interaction = {
 
 		artifact_interaction_modifier = yes
 
-		# TODO: Implement better than binary comparisons
-		modifier = {
-			add = 70
-			scope:actor.max_military_strength > scope:recipient.max_military_strength
-			desc = ARTIFACT_MILITARY_STRONGER_REASON
-		}
-		modifier = {
-			add = -70
-			scope:actor.max_military_strength < scope:recipient.max_military_strength
-			desc = ARTIFACT_MILITARY_WEAKER_REASON
-		}
+		max_military_strength_modifier = yes
+
 		modifier = {
 			add = -50
 			scope:target = { can_be_claimed_by = scope:recipient }
