@@ -8,7 +8,7 @@
   ARTIFACT_COMMON_REASON: "    and this is a #V Common#! [target.GetSlotType]: $VALUE|=+0$"
   ARTIFACT_MASTERWORK_REASON: "    and this is a #V Masterwork#! [target.GetSlotType]: $VALUE|=+0$"
   ARTIFACT_FAMED_REASON: "    and this is a #V Famed#! [target.GetSlotType]: $VALUE|=+0$"
-  ARTIFACT_ILLUSTRIOUS_REASON: "    and this is a #V Illustrious#! [target.GetSlotType]: $VALUE|=+0$"
+  ARTIFACT_ILLUSTRIOUS_REASON: "    and this is an #V Illustrious#! [target.GetSlotType]: $VALUE|=+0$"
   ARTIFACT_UNIQUE_REASON: "    and it's #V Unique#!\: $VALUE|=+0$"
   ARTIFACT_RELIC_HOF_REASON: "[recipient.GetShortUINameNoTooltip] is your [head_of_faith|E]\n    and this is considered a holy #V Relic#!\: $VALUE|=+0$"
   ARTIFACT_RELIC_HOF_REVERSE_REASON: "You are [recipient.GetShortUINamePossessiveNoTooltip] [head_of_faith|E]\n    and this is considered a holy #V Relic#!\: $VALUE|=+0$"
