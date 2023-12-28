@@ -1,0 +1,319 @@
+﻿create_cadet_branch_decision = {
+	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+
+	major = yes
+	ai_check_interval = 60
+
+	is_shown = {
+		is_landed = yes
+		exists = house
+		exists = house.house_head
+		is_house_head = no
+		primary_title.tier > tier_barony
+		NOR = {
+			government_has_flag = government_is_holy_order
+			government_has_flag = government_is_theocracy
+			AND = {
+				faith = { has_doctrine = doctrine_theocracy_temporal }
+				has_council_position = councillor_court_chaplain
+			}
+		}
+	}
+
+	is_valid = {
+		government_allows = create_cadet_branches
+
+		house.house_head = {
+			custom_description = {
+				text = create_cadet_branch_decision_succession_line
+				subject = root
+				NOT = {
+					any_held_title = {
+						place_in_line_of_succession = {
+							target = root
+							value <= 3
+						}
+					}
+				}
+			}
+		}
+		trigger_if = {
+			limit = { government_has_flag = government_is_clan }
+
+			trigger_if = {
+				limit = { is_independent_ruler = yes }
+				is_independent_ruler = yes
+			}
+			trigger_else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							house = root.house
+						}
+					}
+				}
+				custom_description = {
+					text = create_cadet_branch_decision_no_liege_house
+				}
+			}
+			trigger_else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							this = root.house.house_head
+						}
+					}
+				}
+				create_cadet_branch_decision_house_head_not_liege_trigger = yes
+			}
+			trigger_else = {
+				create_cadet_branch_decision_house_head_liege_trigger = yes
+			}
+		}
+
+		custom_description = {
+			text = create_cadet_branch_decision_ancestor_in_house
+			NOT = {
+				any_ancestor = {
+					house = root.house
+				}
+			}
+		}
+		
+		trigger_if = {
+			limit = {
+				is_married = yes
+				is_male = yes
+			}
+			patrilinear_marriage = yes
+		}
+		trigger_if = {
+			limit = {
+				is_married = yes
+				is_female = yes
+			}
+			matrilinear_marriage = yes
+		}
+		trigger_if = { #Males of female-dominated faith must already be patrilineally married before taking this decision.
+			limit = {
+				is_married = no
+				is_female = no
+				faith = {
+					has_doctrine = doctrine_gender_female_dominated
+				}
+			}
+			patrilinear_marriage = yes
+		}
+		trigger_if = { #Females of male-dominated faith must already be matrilineally married before taking this decision.
+			limit = {
+				is_married = no
+				is_female = yes
+				faith = {
+					has_doctrine = doctrine_gender_male_dominated
+				}
+			}
+			matrilinear_marriage = yes
+		}
+		trigger_if = {
+			limit = {
+				has_trait = devoted
+			}
+			NOT = {
+				has_trait = devoted
+			}
+		}
+		trigger_if = {
+			limit = {
+				has_trait = bastard
+			}
+			NOT = {
+				has_trait = bastard
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_landed = yes
+	}
+
+	effect = {
+		# NOT CLAN
+		if = {
+			limit = {
+				NOT = { government_has_flag = government_is_clan }
+			}
+			found_cadet_house_decision_effect = {
+				CHARACTER = root
+				PRESTIGE = major_prestige_gain
+			}
+		}
+		else = {
+			# CLAN AND INDEPENDENT
+			if = {
+				limit = {
+					is_independent_ruler = yes
+				}
+				found_cadet_house_decision_effect = {
+					CHARACTER = root
+					PRESTIGE = major_prestige_gain
+				}
+			}
+			# CLAN AND NOT INDEPENDENT AND NO LIEGE IS PART OF HOUSE
+			else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							house = root.house
+						}
+					}
+				}
+				found_cadet_house_decision_effect = {
+					CHARACTER = root
+					PRESTIGE = minor_prestige_gain
+				}
+			}
+			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF HOUSE AND NONE IS HOUSE HEAD
+			else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							this = root.house.house_head
+						}
+					}
+				}
+
+				create_cadet_branch_decision_house_head_not_liege_effect = yes
+			}
+			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF HOUSE AND ANY IS HOUSE HEAD
+			else = {
+				create_cadet_branch_decision_house_head_liege_effect = yes
+			}
+		}
+
+		remove_trait = decadent
+		remove_trait = extolled
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 30
+		
+		modifier = {
+			add = 40
+			highest_held_title_tier = tier_duchy
+		}
+
+		modifier = {
+			add = 30
+			highest_held_title_tier >= tier_kingdom
+		}
+
+		modifier = {
+			add = -50
+			# NOT Clan
+			NOT = { government_has_flag = government_is_clan }
+			is_independent_ruler = no
+			any_liege_or_above = {
+				dynasty = root.dynasty
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			any_child = {
+				is_alive = yes
+				count < 3
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			any_player = {
+				OR = {
+					any_child = {
+						OR = {
+							is_child_of = root
+							is_grandchild_of = root
+							is_great_grandchild_of = root
+						}
+					}
+					any_child = {
+						even_if_dead = yes
+						any_child = {
+							OR = {
+								is_child_of = root
+								is_grandchild_of = root
+								is_great_grandchild_of = root
+							}
+						}
+					}
+					any_child = {
+						even_if_dead = yes
+						any_child = {
+							even_if_dead = yes
+							any_child = {
+								OR = {
+									is_child_of = root
+									is_grandchild_of = root
+									is_great_grandchild_of = root
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# Clan
+		modifier = {
+			factor = 0
+			government_has_flag = government_is_clan
+			opinion = {
+				target = house.house_head
+				value >= -50
+			}
+		}
+
+		# Clan AND NOT independent
+		modifier = {
+			add = -30
+			government_has_flag = government_is_clan
+			is_independent_ruler = no
+		}
+
+		# Dread-related modifiers of house head
+		modifier = {
+			factor = 0.667
+			is_independent_ruler = no
+			any_liege_or_above = {
+				this = house.house_head
+			}
+			has_dread_level_towards = {
+				target = house.house_head
+				level = 1
+			}
+		}
+
+		modifier = {
+			factor = 0.333
+			is_independent_ruler = no
+			any_liege_or_above = {
+				this = house.house_head
+			}
+			has_dread_level_towards = {
+				target = house.house_head
+				level = 2
+			}
+		}
+
+		# Patriarch/Matriarch trait
+		modifier = {
+			factor = 1.2
+			has_trait = family_first
+		}
+	}
+}

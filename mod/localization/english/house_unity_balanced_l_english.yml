@@ -1,21 +1,25 @@
 ﻿l_english:
+  # Missing loc
   aniconist_destroying_relic: "Faith Tenet: Aniconism"
 
+  # Artifact wars
   CB_ARTIFACT_WAR_PRESTIGE_PERSONAL: "Personal Claim"
   CB_ARTIFACT_WAR_PRESTIGE_HOUSE: "House Claim"
   CB_RECLAIM_RELIC_WAR_PRESTIGE: "Relics"
 
+  # Demand Artifact modifiers
   ARTIFACT_COMMON_REASON: "    and this is a #V Common#! [target.GetSlotType]: $VALUE|=+0$"
   ARTIFACT_MASTERWORK_REASON: "    and this is a #V Masterwork#! [target.GetSlotType]: $VALUE|=+0$"
   ARTIFACT_FAMED_REASON: "    and this is a #V Famed#! [target.GetSlotType]: $VALUE|=+0$"
   ARTIFACT_ILLUSTRIOUS_REASON: "    and this is an #V Illustrious#! [target.GetSlotType]: $VALUE|=+0$"
-  ARTIFACT_UNIQUE_REASON: "    and it's #V Unique#!\: $VALUE|=+0$"
-  ARTIFACT_RELIC_HOF_REASON: "[recipient.GetShortUINameNoTooltip] is your [head_of_faith|E]\n    and this is considered a holy #V Relic#!\: $VALUE|=+0$"
-  ARTIFACT_RELIC_HOF_REVERSE_REASON: "You are [recipient.GetShortUINamePossessiveNoTooltip] [head_of_faith|E]\n    and this is considered a holy #V Relic#!\: $VALUE|=+0$"
-  ARTFIACT_DYNASTY_BANNER_DYNAST_REASON: "[recipient.GetShortUINameNoTooltip] is your [dynast|E]\n    and this is the #V Dynasty Banner#!\: $VALUE|=+0$"
+  ARTIFACT_UNIQUE_REASON: "    and it's #V Unique#!: $VALUE|=+0$"
+  ARTIFACT_RELIC_HOF_REASON: "[recipient.GetShortUINameNoTooltip] is your [head_of_faith|E]\n    and this is considered a holy #V Relic#!: $VALUE|=+0$"
+  ARTIFACT_RELIC_HOF_REVERSE_REASON: "You are [recipient.GetShortUINamePossessiveNoTooltip] [head_of_faith|E]\n    and this is considered a holy #V Relic#!: $VALUE|=+0$"
+  ARTFIACT_DYNASTY_BANNER_DYNAST_REASON: "[recipient.GetShortUINameNoTooltip] is your [dynast|E]\n    and this is the #V Dynasty Banner#!: $VALUE|=+0$"
   ARTIFACT_INTIMIDATED_REASON: "[recipient.GetShortUINameNoTooltip] is [intimidated|E] by you: $VALUE|=+0$"
   ARTIFACT_TERRIFIED_REASON: "[recipient.GetShortUINameNoTooltip] is [cowed|E] by you: $VALUE|=+0$"
 
+  # Artifact interaction triggers
   demand_artifact_interaction_house_claim: "Cannot press a House Artifact claim against a member of the same House without a personal claim!"
   challenge_artifact_interaction_house_claim: "$demand_artifact_interaction_house_claim$"
   buy_artifact_interaction_valid: "This character doesn't own any artifact for which you don't have a claim or can claim"
@@ -23,11 +27,15 @@
   buy_artifact_interaction_relic: "Cannot buy claim on a holy Relic from your [head_of_faith|E]!"
   buy_artifact_interaction_dynasty_banner: "Cannot buy claim on a Dynasty Banner!"
 
+  # Steal Back Artifact
   steal_back_artifact_outcome.2999.t: "$steal_back_artifact_event_title$ Foiled Theft!"
   steal_back_artifact_outcome.2999: "Today was a good day to admire [artifact_to_steal.GetName], but to my horror, I discovered that it's gone missing!\n\n After a brief investigation, a guard tells me that it has been found in the living quarter, just about to be smuggled away by a clumsy servant. \n\n It didn't take long to force a confession; [owner.GetTitledFirstName] is the one behind the plot to steal [artifact_to_steal.GetName]!"
   steal_back_artifact_outcome.2999.a: "Curse you, [owner.GetTitledFirstNameNoTooltip]! You shall never have it!"
 
-  clan_unity_steal_artifact.desc: "stole an artifact from [unity_target.GetName]"
-  clan_unity_demanded_artifact.desc: "demanded an artifact from [unity_target.GetName]"
-  clan_unity_challenge_artifact.desc: "challenged and won an artifact from [unity_target.GetName]"
-  clan_unity_received_banner.desc: "received the [unity_target.GetDynasty.GetBaseName] Dynasty Banner from [unity_target.GetName]"
+  # Create Cadet Branch Decision
+  create_cadet_branch_decision_no_liege_house: "No [liege|E] or above is part of your [house|E]"
+  create_cadet_branch_decision_friendly_relation: "You are not [friend|E] or [best_friend|E] with [CHARACTER.GetHouse.GetHeadOfHouse.GetShortUIName]"
+  split_house_forcefully_opinion: "Split from House forcefully"
+  split_house_opinion: "Split from House"
+  clan_unity_split_house.desc: "split from [house|E]"
+  clan_unity_split_house_forcefully.desc: "split from [house|E] forcefully"
