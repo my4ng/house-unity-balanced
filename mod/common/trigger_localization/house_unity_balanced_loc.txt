@@ -26,3 +26,7 @@ create_cadet_branch_decision_friendly_relation = {
 	first = create_cadet_branch_decision_friendly_relation
 	first_not = create_cadet_branch_decision_friendly_relation
 }
+
+create_cadet_branch_decision_no_liege_house = {
+	first = create_cadet_branch_decision_no_liege_house
+}

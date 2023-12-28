@@ -24,28 +24,50 @@
 		government_allows = create_cadet_branches
 
 		house.house_head = {
-			# due to the new system, cadet branch for Clans should only be available is the character is in another realm than their House Head
-			trigger_if = {
-				limit = { NOT = { government_has_flag = government_is_clan } }
-				custom_description = {
-					text = create_cadet_branch_decision_succession_line
-					NOT = {
-						any_held_title = {
-							place_in_line_of_succession = {
-								target = root
-								value <=3
-							}
+			custom_description = {
+				text = create_cadet_branch_decision_succession_line
+				subject = root
+				NOT = {
+					any_held_title = {
+						place_in_line_of_succession = {
+							target = root
+							value <= 3
 						}
 					}
 				}
 			}
-			trigger_else = {
-				root = {
-					OR = {
-						is_independent_ruler = yes 
-						create_cadet_branch_clan_not_independent_trigger = yes
+		}
+		trigger_if = {
+			limit = { government_has_flag = government_is_clan }
+
+			trigger_if = {
+				limit = { is_independent_ruler = yes }
+				is_independent_ruler = yes
+			}
+			trigger_else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							house = root.house
+						}
 					}
 				}
+				custom_description = {
+					text = create_cadet_branch_decision_no_liege_house
+				}
+			}
+			trigger_else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							this = root.house.house_head
+						}
+					}
+				}
+				create_cadet_branch_decision_house_head_not_liege_trigger = yes
+			}
+			trigger_else = {
+				create_cadet_branch_decision_house_head_liege_trigger = yes
 			}
 		}
 
@@ -116,14 +138,10 @@
 	}
 
 	effect = {
+		# NOT CLAN
 		if = {
-			limit = { 
-				trigger_if = {
-					limit = { 
-						government_has_flag = government_is_clan 
-					}
-					is_independent_ruler = yes
-				}
+			limit = {
+				NOT = { government_has_flag = government_is_clan }
 			}
 			found_cadet_house_decision_effect = {
 				CHARACTER = root
@@ -131,30 +149,50 @@
 			}
 		}
 		else = {
-			house.house_head = {
-				save_scope_as = house_head
-				add_opinion = {
-					target = root
-					modifier = split_house_forcefully_opinion
+			# CLAN AND INDEPENDENT
+			if = {
+				limit = {
+					is_independent_ruler = yes
+				}
+				found_cadet_house_decision_effect = {
+					CHARACTER = root
+					PRESTIGE = major_prestige_gain
 				}
 			}
-
-			add_clan_unity_interaction_effect = {
-				CHARACTER = root
-				TARGET = scope:house_head
-				VALUE = major_unity_loss
-				DESC = clan_unity_split_house_forcefully.desc
-				REVERSE_NON_HOUSE_TARGET = no
+			# CLAN AND NOT INDEPENDENT AND NO LIEGE IS PART OF HOUSE
+			else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							house = root.house
+						}
+					}
+				}
+				found_cadet_house_decision_effect = {
+					CHARACTER = root
+					PRESTIGE = minor_prestige_gain
+				}
 			}
+			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF DYNASTY AND NONE IS HOUSE HEAD
+			else_if = {
+				limit = {
+					NOT = {
+						any_liege_or_above = {
+							this = root.house.house_head
+						}
+					}
+				}
 
-			remove_trait = decadent
-			remove_trait = extolled
-			
-			found_cadet_house_decision_effect = {
-				CHARACTER = root
-				PRESTIGE = massive_prestige_loss
+				create_cadet_branch_decision_house_head_not_liege_effect = yes
+			}
+			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF DYNASTY AND ANY IS HOUSE HEAD
+			else = {
+				create_cadet_branch_decision_house_head_liege_effect = yes
 			}
 		}
+
+		remove_trait = decadent
+		remove_trait = extolled
 	}
 	
 	ai_potential = {
@@ -165,13 +203,19 @@
 		base = 30
 		
 		modifier = {
-			add = 70
-			exists = primary_title
-			primary_title.tier > tier_county
+			add = 30
+			highest_held_title_tier = tier_duchy
+		}
+
+		modifier = {
+			add = 40
+			highest_held_title_tier >= tier_kingdom
 		}
 
 		modifier = {
 			add = -50
+			# NOT Clan
+			NOT = { government_has_flag = government_is_clan }
 			is_independent_ruler = no
 			any_liege_or_above = {
 				dynasty = root.dynasty
@@ -182,7 +226,7 @@
 			factor = 0
 			any_child = {
 				is_alive = yes
-				count < 3
+				count < 4 # 3 -> 4
 			}
 		}
 		
@@ -224,7 +268,7 @@
 			}
 		}
 
-		# we don't want AI to split from their House unless they dislike their house head (ONLY if independent)
+		# Clan AND independent
 		modifier = {
 			factor = 0
 			government_has_flag = government_is_clan
@@ -235,15 +279,80 @@
 			}
 		}
 
-		# If AI has negative opinion of House head AND not independent, then always try to split from their House
+		# Clan AND vassal of non-house characters
 		modifier = {
-			add = 50
+			add = -30
 			government_has_flag = government_is_clan
 			is_independent_ruler = no
+			NOT = {
+				any_liege_or_above = {
+					house = root.house
+				}
+			}
+		}
+
+		modifier = {
+			factor = 0
+			government_has_flag = government_is_clan
+			is_independent_ruler = no
+			NOT = {
+				any_liege_or_above = {
+					house = root.house
+				}
+			}
 			opinion = {
 				target = house.house_head
-				value < 0
+				value >= -50
 			}
+		}
+
+		# Clan AND vassal of House character (incl. House head)
+		# Difficulty lies in the requirement
+		modifier = {
+			factor = 0
+			government_has_flag = government_is_clan
+			is_independent_ruler = no
+			any_liege_or_above = {
+				house = root.house
+			}
+			OR = {
+				highest_held_title_tier < tier_duchy
+				opinion = {
+					target = house.house_head
+					value >= 0
+				}
+			}
+		}
+
+		# Dread-related modifiers of house head
+		modifier = {
+			factor = 0.5
+			is_independent_ruler = no
+			any_liege_or_above = {
+				this = house.house_head
+			}
+			has_dread_level_towards = {
+				target = house.house_head
+				level = 1
+			}
+		}
+
+		modifier = {
+			factor = 0
+			is_independent_ruler = no
+			any_liege_or_above = {
+				this = house.house_head
+			}
+			has_dread_level_towards = {
+				target = house.house_head
+				level = 2
+			}
+		}
+
+		# Patriarch/Matriarch trait
+		modifier = {
+			factor = 1.2
+			has_trait = family_first
 		}
 	}
 }

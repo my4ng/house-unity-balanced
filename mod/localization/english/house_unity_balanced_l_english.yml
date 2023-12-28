@@ -33,6 +33,9 @@
   steal_back_artifact_outcome.2999.a: "Curse you, [owner.GetTitledFirstNameNoTooltip]! You shall never have it!"
 
   # Create Cadet Branch Decision
+  create_cadet_branch_decision_no_liege_house: "No [liege|E] or above is part of your [house|E]"
   create_cadet_branch_decision_friendly_relation: "You are not [friend|E] or [best_friend|E] with [CHARACTER.GetHouse.GetHeadOfHouse.GetShortUIName]"
   split_house_forcefully_opinion: "Split from House forcefully"
+  split_house_opinion: "Split from House"
+  clan_unity_split_house.desc: "split from [house|E]"
   clan_unity_split_house_forcefully.desc: "split from [house|E] forcefully"
