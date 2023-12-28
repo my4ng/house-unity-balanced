@@ -319,7 +319,7 @@
 				highest_held_title_tier < tier_duchy
 				opinion = {
 					target = house.house_head
-					value >= 0
+					value >= -20
 				}
 			}
 		}
@@ -338,7 +338,7 @@
 		}
 
 		modifier = {
-			factor = 0
+			factor = 0.25
 			is_independent_ruler = no
 			any_liege_or_above = {
 				this = house.house_head
@@ -351,7 +351,7 @@
 
 		# Patriarch/Matriarch trait
 		modifier = {
-			factor = 1.2
+			factor = 1.1
 			has_trait = family_first
 		}
 	}
