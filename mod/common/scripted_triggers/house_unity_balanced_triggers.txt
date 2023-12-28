@@ -38,15 +38,15 @@ artifact_dynasty_banner_dynast_trigger = {
 }
 
 create_cadet_branch_decision_house_head_not_liege_trigger = {
-	prestige >= massive_prestige_value
+	prestige >= major_prestige_value
 	prestige_level >= 3
 
 	highest_held_title_tier >= tier_duchy
 }
 
 create_cadet_branch_decision_house_head_liege_trigger = {
-	prestige >= monumental_prestige_value
-	prestige_level >= 4
+	prestige >= massive_prestige_value
+	prestige_level >= 3
 
 	highest_held_title_tier >= tier_duchy
 

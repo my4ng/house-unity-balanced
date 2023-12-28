@@ -173,7 +173,7 @@
 					PRESTIGE = minor_prestige_gain
 				}
 			}
-			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF DYNASTY AND NONE IS HOUSE HEAD
+			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF HOUSE AND NONE IS HOUSE HEAD
 			else_if = {
 				limit = {
 					NOT = {
@@ -185,7 +185,7 @@
 
 				create_cadet_branch_decision_house_head_not_liege_effect = yes
 			}
-			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF DYNASTY AND ANY IS HOUSE HEAD
+			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF HOUSE AND ANY IS HOUSE HEAD
 			else = {
 				create_cadet_branch_decision_house_head_liege_effect = yes
 			}
@@ -203,12 +203,12 @@
 		base = 30
 		
 		modifier = {
-			add = 30
+			add = 40
 			highest_held_title_tier = tier_duchy
 		}
 
 		modifier = {
-			add = 40
+			add = 30
 			highest_held_title_tier >= tier_kingdom
 		}
 
@@ -226,7 +226,7 @@
 			factor = 0
 			any_child = {
 				is_alive = yes
-				count < 4 # 3 -> 4
+				count < 3
 			}
 		}
 		
@@ -268,65 +268,26 @@
 			}
 		}
 
-		# Clan AND independent
+		# Clan
 		modifier = {
 			factor = 0
 			government_has_flag = government_is_clan
-			is_independent_ruler = yes 
 			opinion = {
 				target = house.house_head
 				value >= -50
 			}
 		}
 
-		# Clan AND vassal of non-house characters
+		# Clan AND NOT independent
 		modifier = {
 			add = -30
 			government_has_flag = government_is_clan
 			is_independent_ruler = no
-			NOT = {
-				any_liege_or_above = {
-					house = root.house
-				}
-			}
-		}
-
-		modifier = {
-			factor = 0
-			government_has_flag = government_is_clan
-			is_independent_ruler = no
-			NOT = {
-				any_liege_or_above = {
-					house = root.house
-				}
-			}
-			opinion = {
-				target = house.house_head
-				value >= -50
-			}
-		}
-
-		# Clan AND vassal of House character (incl. House head)
-		# Difficulty lies in the requirement
-		modifier = {
-			factor = 0
-			government_has_flag = government_is_clan
-			is_independent_ruler = no
-			any_liege_or_above = {
-				house = root.house
-			}
-			OR = {
-				highest_held_title_tier < tier_duchy
-				opinion = {
-					target = house.house_head
-					value >= -20
-				}
-			}
 		}
 
 		# Dread-related modifiers of house head
 		modifier = {
-			factor = 0.5
+			factor = 0.667
 			is_independent_ruler = no
 			any_liege_or_above = {
 				this = house.house_head
@@ -338,7 +299,7 @@
 		}
 
 		modifier = {
-			factor = 0.25
+			factor = 0.333
 			is_independent_ruler = no
 			any_liege_or_above = {
 				this = house.house_head
@@ -351,7 +312,7 @@
 
 		# Patriarch/Matriarch trait
 		modifier = {
-			factor = 1.1
+			factor = 1.2
 			has_trait = family_first
 		}
 	}
