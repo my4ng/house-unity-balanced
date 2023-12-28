@@ -1,4 +1,4 @@
-![supported version](https://img.shields.io/badge/supported_version-1.11.3-darkred) ![license](https://img.shields.io/badge/license-BSD--2--Clause_Plus_Patent-brightgreen)
+![supported version](https://img.shields.io/badge/supported_version-1.11.*-darkred) ![Steam Subscriptions](https://img.shields.io/steam/subscriptions/3122203007?color=dodgerblue) ![license](https://img.shields.io/badge/license-BSD--2--Clause_Plus_Patent-green)
 
 # House Unity Balanced
 
@@ -32,7 +32,7 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 - [x] Character Interactions
 - [ ] Diplomatic Interactions
 - [ ] Intrigue Schemes
-- [ ] Cadet Branch Requirements
+- [x] Cadet Branch Decision
 - [x] Thumbnail
 - [x] Steam Workshop
 
