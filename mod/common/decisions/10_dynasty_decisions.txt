@@ -1,6 +1,9 @@
 ﻿create_cadet_branch_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 
+	# TODO: Dynamic description based on tiers
+	# TODO: Add `custom_description` for the last two tiers
+
 	major = yes
 	ai_check_interval = 60
 
