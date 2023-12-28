@@ -36,3 +36,45 @@ artifact_dynasty_banner_dynast_trigger = {
 	exists = scope:target.var:banner_dynasty
 	scope:target.var:banner_dynasty.dynast ?= scope:recipient
 }
+
+create_cadet_branch_clan_not_independent_trigger = {
+	prestige >= massive_prestige_value
+	prestige_level >= 3
+
+	OR = {
+		highest_held_title_tier = tier_kingdom
+
+		AND = {
+			highest_held_title_tier = tier_duchy
+			has_trait = family_first
+		}
+	}
+	
+	has_usable_hook = house.house_head
+
+	custom_description = {
+		text = create_cadet_branch_decision_friendly_relation
+		NOR = { 
+			has_relation_friend = house.house_head
+			has_relation_best_friend = house.house_head
+		}
+	}
+
+	trigger_if = {
+		limit = {
+			house.house_head = {
+				fp3_struggle_is_the_caliph = yes
+			}
+		}
+		has_trait = fp3_struggle_detractor
+	}
+
+	# AI-only not intimidated or terrified
+	trigger_if = {
+		limit = { is_ai = yes }
+		has_dread_level_towards = {
+			target = house.house_head
+			level = 0
+		}
+	}
+}

@@ -1,3 +1,8 @@
 ﻿l_english:
+  clan_unity_steal_artifact.desc: "stole an artifact from [unity_target.GetName]"
+  clan_unity_demanded_artifact.desc: "demanded an artifact from [unity_target.GetName]"
+  clan_unity_challenge_artifact.desc: "challenged and won an artifact from [unity_target.GetName]"
+  clan_unity_received_banner.desc: "received the [unity_target.GetDynasty.GetBaseName] Dynasty Banner from [unity_target.GetName]"
+
   INCREASE_UNITY_DESC: "Wants to increase [house_unity|E]: $VALUE|=+0$"
   DECREASE_UNITY_DESC: "Wants to decrease [house_unity|E]: $VALUE|=+0$"

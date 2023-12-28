@@ -1,8 +1,4 @@
-﻿# demand_artifact_interaction_valid_claim = {
-# 	third_not = demand_artifact_interaction_valid_claim
-# }
-
-demand_artifact_interaction_house_claim = {
+﻿demand_artifact_interaction_house_claim = {
 	third_not = demand_artifact_interaction_house_claim
 }
 
@@ -24,4 +20,9 @@ buy_artifact_interaction_relic = {
 
 buy_artifact_interaction_dynasty_banner = {
 	third_not = buy_artifact_interaction_dynasty_banner
+}
+
+create_cadet_branch_decision_friendly_relation = {
+	first = create_cadet_branch_decision_friendly_relation
+	first_not = create_cadet_branch_decision_friendly_relation
 }

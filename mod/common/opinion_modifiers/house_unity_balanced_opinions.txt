@@ -1,0 +1,5 @@
+﻿split_house_forcefully_opinion = {
+	opinion = -50
+	years = 30
+	decaying = yes
+}
