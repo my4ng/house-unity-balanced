@@ -38,7 +38,7 @@ artifact_dynasty_banner_dynast_trigger = {
 }
 
 # Cadet Branch Decision
-cadet_branch_is_ai_prestige_level_trigger = {
+cadet_branch_prestige_level_trigger = {
 	if = {
 		limit = {
 			is_ai = yes
@@ -60,7 +60,7 @@ create_cadet_branch_decision_no_liege_house_trigger = {
 create_cadet_branch_decision_liege_house_trigger = {
 	prestige >= massive_prestige_value
 	
-	cadet_branch_is_ai_prestige_level_trigger = yes
+	cadet_branch_prestige_level_trigger = yes
 	
 	highest_held_title_tier >= tier_duchy
 }
@@ -68,7 +68,7 @@ create_cadet_branch_decision_liege_house_trigger = {
 create_cadet_branch_decision_liege_house_head_trigger = {
 	prestige >= monumental_prestige_value
 
-	cadet_branch_is_ai_prestige_level_trigger = yes
+	cadet_branch_prestige_level_trigger = yes
 
 	highest_held_title_tier >= tier_duchy
 

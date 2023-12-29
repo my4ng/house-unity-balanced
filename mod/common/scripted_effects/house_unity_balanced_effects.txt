@@ -141,6 +141,8 @@ create_cadet_branch_decision_liege_house_head_effect = {
 		use_hook = scope:house_head
 	}
 
+	# TODO: Add negative character modifier for 10 years
+
 	add_clan_unity_interaction_effect = {
 		CHARACTER = root
 		TARGET = scope:house_head

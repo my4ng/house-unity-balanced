@@ -282,7 +282,7 @@
 			government_has_flag = government_is_clan
 			opinion = {
 				target = house.house_head
-				value >= medium_negative_opinion # -40
+				value >= medium_negative_opinion # -50 -> -40
 			}
 		}
 
@@ -322,6 +322,12 @@
 		modifier = {
 			factor = 1.2
 			has_trait = family_first
+		}
+
+		# Ambitious
+		modifier = {
+			factor = 1.1
+			has_trait = ambitious
 		}
 
 		# Accused of Decadence
