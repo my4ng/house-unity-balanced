@@ -117,20 +117,9 @@ create_cadet_branch_decision_liege_house_effect = {
 		REVERSE_NON_HOUSE_TARGET = no
 	}
 
-	if = {
-		limit = {
-			is_ai = yes
-		}
-		found_cadet_house_decision_effect = {
-			CHARACTER = root
-			PRESTIGE = major_prestige_loss
-		}
-	}
-	else = {
-		found_cadet_house_decision_effect = {
-			CHARACTER = root
-			PRESTIGE = massive_prestige_loss
-		}
+	found_cadet_house_decision_effect = {
+		CHARACTER = root
+		PRESTIGE = major_prestige_loss
 	}
 }
 
@@ -160,19 +149,8 @@ create_cadet_branch_decision_liege_house_head_effect = {
 		REVERSE_NON_HOUSE_TARGET = no
 	}
 	
-	if = {
-		limit = {
-			is_ai = yes
-		}
-		found_cadet_house_decision_effect = {
-			CHARACTER = root
-			PRESTIGE = maassive_prestige_loss
-		}
-	}
-	else = {
-		found_cadet_house_decision_effect = {
-			CHARACTER = root
-			PRESTIGE = monumental_prestige_loss
-		}
+	found_cadet_house_decision_effect = {
+		CHARACTER = root
+		PRESTIGE = monumental_prestige_loss
 	}
 }

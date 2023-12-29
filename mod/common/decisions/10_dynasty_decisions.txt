@@ -288,7 +288,7 @@
 
 		# Clan AND NOT independent
 		modifier = {
-			add = -30
+			add = -30 # No count allowed to create cadet branch
 			government_has_flag = government_is_clan
 			is_independent_ruler = no
 		}
