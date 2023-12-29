@@ -1,12 +1,18 @@
-![supported version](https://img.shields.io/badge/supported_version-1.11.*-darkred) ![Steam Subscriptions](https://img.shields.io/steam/subscriptions/3122203007?color=dodgerblue) ![license](https://img.shields.io/badge/license-BSD--2--Clause_Plus_Patent-green)
+<h1 align="center">
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3122203007">
+    <img alt="House Unity Balanced" src="./mod/thumbnail.png" width="300">
+  </a>
+</h1>
 
-[![thumbnail](./mod/thumbnail.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=3122203007)
+<p align="center">
+  <img src="https://img.shields.io/badge/supported_version-1.11.*-darkred" alt="Supported Version: 1.11.*">
+  <img src="https://img.shields.io/steam/subscriptions/3122203007?color=dodgerblue" alt="Steam Subscriptions">
+  <img src="https://img.shields.io/badge/license-BSD--2--Clause_Plus_Patent-green" alt="License: BSD-2-Clause Plus Patent">
+</p>
 
-# House Unity Balanced
+**House Unity Balanced** is a Crusader Kings 3 mod, designed to rework and adjust aspects of House Unity, "a measure of the internal stability in the ruling house of a Clan realm".
 
-House Unity Balanced is a **Crusader Kings 3** mod, designed to rework and adjust aspects of **House Unity**, "a measure of the internal stability in the ruling house of a Clan realm".
-
-The motivation is straight-forward; as a house grows over time, the proportional power of each individual member is _significantly_ reduced. Since there are more unity-reducing actions, such as imprisonment and demand artifact, than promoting ones, the house unity almost always tends towards antagonistic, with little the player can do to swing the scale. This is exacerbated by the fact that cadets branches may only be created by independent rulers.
+The motivation is straight-forward; as a house grows over time, the proportional power of each individual member is _significantly_ reduced. Since there are more unity-reducing actions, such as imprisonment and demand artifact, than promoting ones, the house unity almost always tends towards antagonistic, with little the player can do to swing the scale. This is exacerbated by the fact that cadets branches may only be created by independent rulers in the base game.
 
 The primary features of this mod is dynamic scaling of house unity changes: if there are more house members, measured by the number of landed characters, the less impactful each individual action will be.
 
@@ -25,6 +31,7 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
   - Change Artifact history and claim from defender to Artifact owner
 - Tweaked character interaction (e.g. lover, rival) House Unity changes
 - Improved House Unity history descriptions
+- Allowed clan vassal Create Cadet Branch Decision (with additional conditions!)
 
 ## Roadmap
 
