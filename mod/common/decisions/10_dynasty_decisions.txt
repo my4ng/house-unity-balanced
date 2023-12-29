@@ -326,7 +326,7 @@
 
 		# Accused of Decadence
 		modifier = {
-			factor = 1.2
+			factor = 1.1
 			has_trait = decadent
 		}
 	}

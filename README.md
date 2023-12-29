@@ -1,5 +1,7 @@
 ![supported version](https://img.shields.io/badge/supported_version-1.11.*-darkred) ![Steam Subscriptions](https://img.shields.io/steam/subscriptions/3122203007?color=dodgerblue) ![license](https://img.shields.io/badge/license-BSD--2--Clause_Plus_Patent-green)
 
+[![thumbnail](./mod/thumbnail.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=3122203007)
+
 # House Unity Balanced
 
 House Unity Balanced is a **Crusader Kings 3** mod, designed to rework and adjust aspects of **House Unity**, "a measure of the internal stability in the ruling house of a Clan realm".
