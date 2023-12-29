@@ -37,28 +37,56 @@ artifact_dynasty_banner_dynast_trigger = {
 	scope:target.var:banner_dynasty.dynast ?= scope:recipient
 }
 
-create_cadet_branch_decision_house_head_not_liege_trigger = {
-	prestige >= major_prestige_value
-	prestige_level >= 3
+# Cadet Branch Decision
+create_cadet_branch_decision_no_liege_house_trigger = {
+	trigger_if = {
+		limit = { is_ai = no }
+		prestige_level >= 2
+	}
+}
 
+create_cadet_branch_decision_liege_house_trigger = {
+	prestige >= massive_prestige_value
+	
+	trigger_if = {
+		limit = { is_ai = yes }
+		prestige_level >= 2
+	}
+	trigger_else = {
+		prestige_level >= 3
+	}
+	
 	highest_held_title_tier >= tier_duchy
 }
 
-create_cadet_branch_decision_house_head_liege_trigger = {
-	prestige >= massive_prestige_value
-	prestige_level >= 3
-
-	highest_held_title_tier >= tier_duchy
-
-	custom_description = {
-		text = create_cadet_branch_decision_friendly_relation
-		NOR = { 
-			has_relation_friend = house.house_head
-			has_relation_best_friend = house.house_head
-		}
+create_cadet_branch_decision_liege_house_head_trigger = {
+	prestige >= monumental_prestige_value
+	
+	trigger_if = {
+		limit = { is_ai = yes }
+		prestige_level >= 3
+	}
+	trigger_else = {
+		prestige_level >= 4
 	}
 
+	highest_held_title_tier >= tier_duchy
+	
 	has_usable_hook = house.house_head
+
+	trigger_if = {
+		limit = {
+			OR = { 
+				has_relation_friend = house.house_head
+				has_relation_best_friend = house.house_head
+			}
+		}
+
+		custom_description = {
+			text = create_cadet_branch_decision_friendly_relation
+			always = no
+		}
+	}
 
 	# FP3 (Legacy of Persia) ONLY
 	trigger_if = {
@@ -67,7 +95,10 @@ create_cadet_branch_decision_house_head_liege_trigger = {
 			house.house_head = {
 				fp3_struggle_is_the_caliph = yes
 			}
+			has_trait = fp3_struggle_supporter
 		}
-		has_trait = fp3_struggle_detractor
+		NOT = {
+			has_trait = fp3_struggle_supporter
+		}		
 	}
 }

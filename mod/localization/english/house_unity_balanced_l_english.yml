@@ -34,6 +34,8 @@
 
   # Create Cadet Branch Decision
   create_cadet_branch_decision_no_liege_house: "No [liege|E] or above is part of your [house|E]"
+  create_cadet_branch_decision_liege_house: "Your [liege|E] or above is part of your [house|E]"
+  create_cadet_branch_decision_liege_house_head: "Your [liege|E] or above is your [house_head|E]"
   create_cadet_branch_decision_friendly_relation: "You are not [friend|E] or [best_friend|E] with [CHARACTER.GetHouse.GetHeadOfHouse.GetShortUIName]"
   split_house_forcefully_opinion: "Split from House forcefully"
   split_house_opinion: "Split from House"

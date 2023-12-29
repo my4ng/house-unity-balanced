@@ -2,7 +2,6 @@
 	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
 
 	# TODO: Dynamic description based on tiers
-	# TODO: Add `custom_description` for the last two tiers
 
 	major = yes
 	ai_check_interval = 60
@@ -58,6 +57,7 @@
 				custom_description = {
 					text = create_cadet_branch_decision_no_liege_house
 				}
+				create_cadet_branch_decision_no_liege_house_trigger = yes
 			}
 			trigger_else_if = {
 				limit = {
@@ -67,10 +67,16 @@
 						}
 					}
 				}
-				create_cadet_branch_decision_house_head_not_liege_trigger = yes
+				custom_description = {
+					text = create_cadet_branch_decision_liege_house
+				}
+				create_cadet_branch_decision_liege_house_trigger = yes
 			}
 			trigger_else = {
-				create_cadet_branch_decision_house_head_liege_trigger = yes
+				custom_description = {
+					text = create_cadet_branch_decision_liege_house_head
+				}
+				create_cadet_branch_decision_liege_house_head_trigger = yes
 			}
 		}
 
@@ -185,12 +191,11 @@
 						}
 					}
 				}
-
-				create_cadet_branch_decision_house_head_not_liege_effect = yes
+				create_cadet_branch_decision_liege_house_effect = yes
 			}
 			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF HOUSE AND ANY IS HOUSE HEAD
 			else = {
-				create_cadet_branch_decision_house_head_liege_effect = yes
+				create_cadet_branch_decision_liege_house_head_effect = yes
 			}
 		}
 
@@ -277,7 +282,7 @@
 			government_has_flag = government_is_clan
 			opinion = {
 				target = house.house_head
-				value >= -50
+				value >= medium_negative_opinion # -40
 			}
 		}
 
@@ -317,6 +322,12 @@
 		modifier = {
 			factor = 1.2
 			has_trait = family_first
+		}
+
+		# Accused of Decadence
+		modifier = {
+			factor = 1.2
+			has_trait = decadent
 		}
 	}
 }
