@@ -117,25 +117,10 @@ create_cadet_branch_decision_liege_house_effect = {
 		REVERSE_NON_HOUSE_TARGET = no
 	}
 
-	found_cadet_house_decision_effect = {
-		CHARACTER = root
-		PRESTIGE = major_prestige_loss
-	}
-}
-
-create_cadet_branch_decision_liege_house_head_effect = {
-
-	house.house_head = {
-		save_scope_as = house_head
-		add_opinion = {
-			target = root
-			modifier = split_house_forcefully_opinion
-		}
-	}
-
 	if = {
 		# Used to suppress bugged desc. without hook
 		limit = {
+			is_ai = no
 			has_usable_hook = scope:house_head
 		}
 		use_hook = scope:house_head
@@ -143,16 +128,17 @@ create_cadet_branch_decision_liege_house_head_effect = {
 
 	# TODO: Add negative character modifier for 10 years
 
-	add_clan_unity_interaction_effect = {
-		CHARACTER = root
-		TARGET = scope:house_head
-		VALUE = major_unity_loss
-		DESC = clan_unity_split_house_forcefully.desc
-		REVERSE_NON_HOUSE_TARGET = no
+	if = {
+		limit = { is_ai = yes }
+		found_cadet_house_decision_effect = {
+			CHARACTER = root
+			PRESTIGE = massive_prestige_loss
+		}
 	}
-	
-	found_cadet_house_decision_effect = {
-		CHARACTER = root
-		PRESTIGE = monumental_prestige_loss
+	else = {
+		found_cadet_house_decision_effect = {
+			CHARACTER = root
+			PRESTIGE = monumental_prestige_loss
+		}
 	}
 }
