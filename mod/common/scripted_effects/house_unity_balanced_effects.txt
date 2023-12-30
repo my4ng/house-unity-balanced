@@ -100,19 +100,63 @@ artifact_interaction_house_unity_effect = {
 	}
 }
 
-create_cadet_branch_decision_liege_house_effect = {
+create_cadet_branch_decision_independent_effect = {
+	house.house_head = {
+		save_scope_as = house_head
+	}
+	
+	add_clan_unity_interaction_effect = {
+		CHARACTER = root
+		TARGET = scope:house_head
+		VALUE = minor_eqbm_unity_value
+		DESC = clan_unity_split_house.desc
+		REVERSE_NON_HOUSE_TARGET = no
+	}
+	
+	found_cadet_house_decision_effect = {
+		CHARACTER = root
+		PRESTIGE = major_prestige_gain
+	}
+}
+
+create_cadet_branch_decision_no_liege_house_effect = {
 	house.house_head = {
 		save_scope_as = house_head
 		add_opinion = {
 			target = root
 			modifier = split_house_opinion
+			opinion = -15
 		}
 	}
 
 	add_clan_unity_interaction_effect = {
 		CHARACTER = root
 		TARGET = scope:house_head
-		VALUE = medium_unity_loss
+		VALUE = medium_eqbm_unity_value
+		DESC = clan_unity_split_house.desc
+		REVERSE_NON_HOUSE_TARGET = no
+	}
+
+	found_cadet_house_decision_effect = {
+		CHARACTER = root
+		PRESTIGE = minor_prestige_gain
+	}
+}
+
+create_cadet_branch_decision_liege_house_effect = {
+	house.house_head = {
+		save_scope_as = house_head
+		add_opinion = {
+			target = root
+			modifier = split_house_opinion
+			opinion = -45
+		}
+	}
+
+	add_clan_unity_interaction_effect = {
+		CHARACTER = root
+		TARGET = scope:house_head
+		VALUE = major_eqbm_unity_value 
 		DESC = clan_unity_split_house.desc
 		REVERSE_NON_HOUSE_TARGET = no
 	}
@@ -132,13 +176,13 @@ create_cadet_branch_decision_liege_house_effect = {
 		limit = { is_ai = yes }
 		found_cadet_house_decision_effect = {
 			CHARACTER = root
-			PRESTIGE = massive_prestige_loss
+			PRESTIGE = major_prestige_loss
 		}
 	}
 	else = {
 		found_cadet_house_decision_effect = {
 			CHARACTER = root
-			PRESTIGE = monumental_prestige_loss
+			PRESTIGE = massive_prestige_loss
 		}
 	}
 }

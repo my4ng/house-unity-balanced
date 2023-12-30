@@ -150,10 +150,7 @@
 				limit = {
 					is_independent_ruler = yes
 				}
-				found_cadet_house_decision_effect = {
-					CHARACTER = root
-					PRESTIGE = major_prestige_gain
-				}
+				create_cadet_branch_decision_independent_effect = yes
 			}
 			# CLAN AND NOT INDEPENDENT AND NO LIEGE IS PART OF HOUSE
 			else_if = {
@@ -164,10 +161,7 @@
 						}
 					}
 				}
-				found_cadet_house_decision_effect = {
-					CHARACTER = root
-					PRESTIGE = minor_prestige_gain
-				}
+				create_cadet_branch_decision_no_liege_house_effect = yes
 			}
 			# CLAN AND NOT INDEPENDENT AND ANY LIEGE IS PART OF HOUSE
 			else = {
@@ -315,7 +309,6 @@
 		modifier = {
 			factor = 1.2
 			house = {
-				has_house_unity = yes
 				has_house_unity_stage = antagonistic
 			}
 		}
@@ -324,7 +317,6 @@
 		modifier = {
 			factor = 0.8
 			house = {
-				has_house_unity = yes
 				has_house_unity_stage = harmonious
 			}
 		}

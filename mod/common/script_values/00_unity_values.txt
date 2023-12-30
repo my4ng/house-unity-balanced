@@ -106,6 +106,36 @@ massive_unity_gain = {
 	value = massive_unity_value
 }
 
+# Equilibrium Unity
+# Move towards the centre (impassive) of house unity
+eqbm_unity_base = {
+	value = -1 
+	multiply = {
+		#   0 |-> -1
+		# 100 |->  0
+		# 200 |->  1
+		value = house_unity_value
+		subtract = 100
+		divide = 100
+	}
+	multiply = number_of_landed_house_members_multiplier
+}
+
+minor_eqbm_unity_value = {
+	value = 2
+	multiply = eqbm_unity_base
+}
+
+medium_eqbm_unity_value = {
+	value = 4
+	multiply = eqbm_unity_base
+}
+
+major_eqbm_unity_value = {
+	value = 6
+	multiply = eqbm_unity_base
+}
+
 unity_house_head_multiplier_value = 2 # How much more of an impact house heads have on house unity
 
 # EFFECTS AND PARAMETER VALUES

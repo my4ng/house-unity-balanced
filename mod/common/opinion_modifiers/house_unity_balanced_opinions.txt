@@ -1,5 +1,4 @@
 ﻿split_house_opinion = {
-	opinion = -45
 	years = 30
 	decaying = yes
 }
