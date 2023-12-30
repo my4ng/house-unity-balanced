@@ -4,7 +4,7 @@
 	# TODO: Dynamic description based on tiers
 
 	major = yes
-	ai_check_interval = 60
+	ai_check_interval = 36 # 60 -> 36
 
 	is_shown = {
 		is_landed = yes
@@ -258,7 +258,7 @@
 			government_has_flag = government_is_clan
 			opinion = {
 				target = house.house_head
-				value >= 0
+				value >= low_negative_opinion # -20
 			}
 		}
 
