@@ -252,6 +252,25 @@
 			}
 		}
 
+		# Clan
+		modifier = {
+			factor = 0
+			government_has_flag = government_is_clan
+			opinion = {
+				target = house.house_head
+				value >= 0
+			}
+		}
+
+		modifier = {
+			factor = 0.5
+			government_has_flag = government_is_clan
+			opinion = {
+				target = house.house_head
+				value >= medium_negative_opinion # -40
+			}
+		}
+
 		# House landed rulers size
 		#   5 |-> 0.5
 		#  10 |-> 1.0
@@ -286,25 +305,6 @@
 			}
 		}
 
-		# Clan
-		modifier = {
-			factor = 0.5
-			government_has_flag = government_is_clan
-			opinion = {
-				target = house.house_head
-				value >= medium_negative_opinion # -40
-			}
-		}
-
-		modifier = {
-			factor = 0
-			government_has_flag = government_is_clan
-			opinion = {
-				target = house.house_head
-				value >= 0
-			}
-		}
-
 		# House Unity - Antagonistic
 		modifier = {
 			factor = 1.2
@@ -321,14 +321,26 @@
 			}
 		}
 
-		
-		# Dread-related modifiers of house head
+		# Clan dread-related modifiers of house head
+		modifier = {
+			factor = 1.333
+			government_has_flag = government_is_clan
+			house.house_head = {
+				OR = {
+					is_adult = no
+					is_incapable = yes
+					is_imprisoned = yes
+				}
+			}
+			has_dread_level_towards = {
+				target = house.house_head
+				level = 0
+			}
+		}
+
 		modifier = {
 			factor = 0.667
-			is_independent_ruler = no
-			any_liege_or_above = {
-				this = house.house_head
-			}
+			government_has_flag = government_is_clan
 			has_dread_level_towards = {
 				target = house.house_head
 				level = 1
@@ -337,10 +349,7 @@
 
 		modifier = {
 			factor = 0.333
-			is_independent_ruler = no
-			any_liege_or_above = {
-				this = house.house_head
-			}
+			government_has_flag = government_is_clan
 			has_dread_level_towards = {
 				target = house.house_head
 				level = 2
