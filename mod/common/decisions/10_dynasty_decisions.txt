@@ -4,7 +4,7 @@
 	# TODO: Dynamic description based on tiers
 
 	major = yes
-	ai_check_interval = 60
+	ai_check_interval = 1
 
 	is_shown = {
 		is_landed = yes
@@ -269,14 +269,16 @@
 		}
 
 		#   15 |-> 1.25
-		# >=20 |-> 1.5
+		#   20 |-> 1.5
+		#   25 |-> 1.75
+		#   30 |-> 2.0
 		modifier = {
 			factor = {
 				value = number_of_landed_house_members_value
 				subtract = 10
 				multiply = 0.05
 				add = 1
-				max = 1.5
+				max = 2
 			}
 			house = {
 				any_house_member = { 
