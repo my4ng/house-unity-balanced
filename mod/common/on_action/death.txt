@@ -1126,9 +1126,9 @@ on_death = {
 				value = {
 					house = {
 						value = root.primary_title.title_held_years
-						max = 20
+						max = 22
 						multiply = 2
-						add = 10
+						add = 6 # minor value
 						# Maximum 50 towards centre
 						multiply = eqbm_unity_base
 					}

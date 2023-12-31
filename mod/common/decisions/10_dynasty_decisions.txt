@@ -323,42 +323,6 @@
 			}
 		}
 
-		# Clan dread-related modifiers of house head
-		modifier = {
-			factor = 1.333
-			government_has_flag = government_is_clan
-			house.house_head = {
-				OR = {
-					is_adult = no
-					is_imprisoned = yes
-					has_contagious_deadly_disease_trigger = yes
-					is_incapable = yes
-				}
-			}
-			has_dread_level_towards = {
-				target = house.house_head
-				level = 0
-			}
-		}
-
-		modifier = {
-			factor = 0.667
-			government_has_flag = government_is_clan
-			has_dread_level_towards = {
-				target = house.house_head
-				level = 1
-			}
-		}
-
-		modifier = {
-			factor = 0.333
-			government_has_flag = government_is_clan
-			has_dread_level_towards = {
-				target = house.house_head
-				level = 2
-			}
-		}
-
 		# Patriarch/Matriarch trait
 		modifier = {
 			factor = 1.2
