@@ -103,6 +103,11 @@ artifact_interaction_house_unity_effect = {
 create_cadet_branch_decision_independent_effect = {
 	house.house_head = {
 		save_scope_as = house_head
+		add_opinion = {
+			target = root
+			modifier = split_house_opinion
+			opinion = -15
+		}
 	}
 	
 	house = {
@@ -125,7 +130,7 @@ create_cadet_branch_decision_no_liege_house_effect = {
 		add_opinion = {
 			target = root
 			modifier = split_house_opinion
-			opinion = -15
+			opinion = -30
 		}
 	}
 

@@ -252,25 +252,6 @@
 			}
 		}
 
-		# Clan
-		modifier = {
-			factor = 0
-			government_has_flag = government_is_clan
-			opinion = {
-				target = house.house_head
-				value >= low_negative_opinion # -20
-			}
-		}
-
-		modifier = {
-			factor = 0.5
-			government_has_flag = government_is_clan
-			opinion = {
-				target = house.house_head
-				value >= medium_negative_opinion # -40
-			}
-		}
-
 		# House landed rulers size
 		#   5 |-> 0.5
 		#  10 |-> 1.0
@@ -302,6 +283,38 @@
 					count > 10 
 					is_landed = yes
 				}
+			}
+		}
+
+		# Clan
+		#    >= -20 |-> 0
+		# -20 ~ -40 |-> 1/3
+		# -40 ~ -60 |-> 2/3
+		#    <= -60 |-> 1
+		modifier = {
+			factor = 0
+			government_has_flag = government_is_clan
+			opinion = {
+				target = house.house_head
+				value >= low_negative_opinion # -20
+			}
+		}
+
+		modifier = {
+			factor = 0.5
+			government_has_flag = government_is_clan
+			opinion = {
+				target = house.house_head
+				value >= medium_negative_opinion # -40
+			}
+		}
+
+		modifier = {
+			factor = 0.667
+			government_has_flag = government_is_clan
+			opinion = {
+				target = house.house_head
+				value >= high_negative_opinion # -60
 			}
 		}
 
