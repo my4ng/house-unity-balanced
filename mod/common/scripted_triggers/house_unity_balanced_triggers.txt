@@ -70,7 +70,6 @@ create_cadet_branch_decision_liege_house_trigger = {
 				has_relation_best_friend = house.house_head
 			}
 		}
-
 		custom_description = {
 			text = create_cadet_branch_decision_friendly_relation
 			always = no

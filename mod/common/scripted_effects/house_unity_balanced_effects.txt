@@ -105,12 +105,12 @@ create_cadet_branch_decision_independent_effect = {
 		save_scope_as = house_head
 	}
 	
-	add_clan_unity_interaction_effect = {
-		CHARACTER = root
-		TARGET = scope:house_head
-		VALUE = minor_eqbm_unity_value
-		DESC = clan_unity_split_house.desc
-		REVERSE_NON_HOUSE_TARGET = no
+	house = {
+		add_unity_value = {
+			value = minor_eqbm_unity_value 
+			character = root
+			desc = clan_unity_split_house.desc
+		}
 	}
 	
 	found_cadet_house_decision_effect = {
@@ -129,12 +129,12 @@ create_cadet_branch_decision_no_liege_house_effect = {
 		}
 	}
 
-	add_clan_unity_interaction_effect = {
-		CHARACTER = root
-		TARGET = scope:house_head
-		VALUE = medium_eqbm_unity_value
-		DESC = clan_unity_split_house.desc
-		REVERSE_NON_HOUSE_TARGET = no
+	house = {
+		add_unity_value = {
+			value = medium_eqbm_unity_value 
+			character = root
+			desc = clan_unity_split_house.desc
+		}
 	}
 
 	found_cadet_house_decision_effect = {
@@ -153,12 +153,12 @@ create_cadet_branch_decision_liege_house_effect = {
 		}
 	}
 
-	add_clan_unity_interaction_effect = {
-		CHARACTER = root
-		TARGET = scope:house_head
-		VALUE = major_eqbm_unity_value 
-		DESC = clan_unity_split_house.desc
-		REVERSE_NON_HOUSE_TARGET = no
+	house = {
+		add_unity_value = {
+			value = major_eqbm_unity_value 
+			character = root
+			desc = clan_unity_split_house.desc
+		}
 	}
 
 	if = {

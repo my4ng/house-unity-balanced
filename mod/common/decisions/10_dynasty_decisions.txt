@@ -4,7 +4,7 @@
 	# TODO: Dynamic description based on tiers
 
 	major = yes
-	ai_check_interval = 36 # 60 -> 36
+	ai_check_interval = 60
 
 	is_shown = {
 		is_landed = yes
@@ -129,7 +129,7 @@
 	}
 
 	is_valid_showing_failures_only = {
-		is_available_adult = yes
+		is_available_adult_or_is_commanding = yes # From is_available_adult
 		is_landed = yes
 	}
 
@@ -308,6 +308,7 @@
 		# House Unity - Antagonistic
 		modifier = {
 			factor = 1.2
+			government_has_flag = government_is_clan
 			house = {
 				has_house_unity_stage = antagonistic
 			}
@@ -316,6 +317,7 @@
 		# House Unity - Harmonious
 		modifier = {
 			factor = 0.8
+			government_has_flag = government_is_clan
 			house = {
 				has_house_unity_stage = harmonious
 			}
@@ -328,8 +330,9 @@
 			house.house_head = {
 				OR = {
 					is_adult = no
-					is_incapable = yes
 					is_imprisoned = yes
+					has_contagious_deadly_disease_trigger = yes
+					is_incapable = yes
 				}
 			}
 			has_dread_level_towards = {

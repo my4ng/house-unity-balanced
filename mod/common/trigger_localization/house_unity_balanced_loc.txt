@@ -23,7 +23,7 @@ buy_artifact_interaction_dynasty_banner = {
 }
 
 create_cadet_branch_decision_friendly_relation = {
-	first_not = create_cadet_branch_decision_friendly_relation
+	first = create_cadet_branch_decision_friendly_relation
 }
 
 create_cadet_branch_decision_no_liege_house = {
