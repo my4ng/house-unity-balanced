@@ -181,12 +181,12 @@
 		base = 30
 		
 		modifier = {
-			add = 40
+			add = 30
 			highest_held_title_tier = tier_duchy
 		}
 
 		modifier = {
-			add = 30
+			add = 40
 			highest_held_title_tier >= tier_kingdom
 		}
 
@@ -271,7 +271,7 @@
 		#   15 |-> 1.25
 		#   20 |-> 1.5
 		#   25 |-> 1.75
-		#   30 |-> 2.0
+		# >=30 |-> 2.0
 		modifier = {
 			factor = {
 				value = number_of_landed_house_members_value
@@ -289,20 +289,23 @@
 		}
 
 		# Clan
-		# c = -50 + boldness / 2, max(c) = 0
-		# factor = 1/40 * (c - opinion)
-		# opinion = c      => factor = 0
-		# opinion = c - 10 => factor = 0.25
-		# opinion = c - 20 => factor = 0.5
-		# opinion = c - 30 => factor = 0.75
-		# opinion = c - 40 => factor = 1
+		# c = (ai_boldness - dread) * 1/100
+		# factor = -1/50 * opinion + c
+		# c = -1, op = -50  => f = 0
+		# c = -1, op = -100 => f = 1
+		# c = 0,  op = 0    => f = 0
+		# c = 0,  op = -50  => f = 1
+		# c = 1,  op = 50   => f = 0
+		# c = 1,  op = 0    => f = 1
 		modifier = {
 			factor = {
-				value = ai_boldness
-				multiply = 0.5
-				add = -50
-				subtract = "opinion(house.house_head)"
-				multiply = 0.025
+				value = "opinion(house.house_head)"
+				multiply = -0.02
+				add = {
+					value = ai_boldness
+					subtract = house.house_head.dread
+					multiply = 0.01
+				}
 				min = 0
 				max = 1
 			}

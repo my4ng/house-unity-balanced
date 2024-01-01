@@ -154,7 +154,7 @@ create_cadet_branch_decision_liege_house_effect = {
 		add_opinion = {
 			target = root
 			modifier = split_house_opinion
-			opinion = -45
+			opinion = -60
 		}
 	}
 
