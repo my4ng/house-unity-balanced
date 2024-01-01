@@ -20,6 +20,7 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 
 - Dynamic House Unity scaling
 - Applied House head modifier for either side of interaction
+- Equilibrium House Unity value
 - Artifact interaction improvements
   - Disallow demand/challenge for Artifact against a House member without a personal claim
   - Adjust House Unity/Opinion changes based on Artifact quality and hostility of interaction
@@ -42,6 +43,7 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 - [ ] Diplomatic Interactions
 - [ ] Intrigue Schemes
 - [x] Cadet Branch Decision
+- [ ] Documentation
 - [x] Thumbnail
 - [x] Steam Workshop
 
