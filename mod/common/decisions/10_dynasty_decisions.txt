@@ -332,11 +332,14 @@
 
 		# Clan house head is weak
 		modifier = {
-			factor = 1.25
+			factor = 1.333
 			government_has_flag = government_is_clan
 			house.house_head = {
 				OR = {
-					is_adult = no
+					AND = {
+						is_adult = no
+						is_landed = no
+					}
 					is_imprisoned = yes
 					has_contagious_deadly_disease_trigger = yes
 					is_incapable = yes
