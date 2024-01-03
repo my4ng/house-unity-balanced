@@ -1,4 +1,4 @@
-﻿house_founder = {
+﻿cadet_house_founder = {
 	category = fame
 	
 	opposites = {
@@ -8,7 +8,7 @@
 		bastard_founder
 	}
 	
-	monthly_prestige_gain_mult = 0.1
+	monthly_prestige_gain_mult = 0.05
 	dynasty_house_opinion = 15
 
 	shown_in_ruler_designer = no
@@ -19,9 +19,9 @@
 				trigger = {
 					NOT = { exists = this }
 				}
-				desc = trait_house_founder_desc
+				desc = trait_cadet_house_founder_desc
 			}
-			desc = trait_house_founder_character_desc
+			desc = trait_cadet_house_founder_character_desc
 		}
 	}
 

@@ -41,6 +41,6 @@
   clan_unity_split_house.desc: "split from [house|E]"
 
   # House Founder Trait
-  trait_house_founder: "House Founder"
-  trait_house_founder_desc: "This character has split from their old House and founded their own."
-  trait_house_founder_character_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] has split from [ROOT.GetCharacter.GetHerHis] old House and founded House [ROOT.GetCharacter.GetHouse.GetNameNoTooltip]."
+  trait_cadet_house_founder: "House Founder"
+  trait_cadet_house_founder_desc: "This character has split from their old House and founded their own."
+  trait_cadet_house_founder_character_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] has split from [ROOT.GetCharacter.GetHerHis] old House and founded House [ROOT.GetCharacter.GetHouse.GetNameNoTooltip]."
