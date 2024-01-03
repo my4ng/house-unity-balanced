@@ -27,26 +27,6 @@
 	on_declaration = {
 		on_declared_war = yes
 	}
-
-	# cost = {
-	# 	prestige = {
-	# 		value = 0
-	# 		add = {
-	# 			value = major_prestige_value
-	# 			desc = CB_BASE_COST
-	# 		}
-	
-	# 		scope:attacker = {
-	# 			every_personal_claimed_artifact = {
-	# 				limit = { artifact_war_claimable_artifact_trigger = yes }
-	# 				add = {
-	# 					value = artifact_war_prestige_cost
-	# 					desc = CB_ARTIFACT_WAR_PRESTIGE_PERSONAL
-	# 				}
-	# 			}
-	# 		}
-	# 	}
-	# }
 	
 	cost = {
 		prestige = {

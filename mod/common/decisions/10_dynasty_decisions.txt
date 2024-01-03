@@ -213,7 +213,7 @@
 				count < 3
 			}
 		}
-		
+
 		modifier = {
 			factor = 0
 			any_player = {
@@ -351,12 +351,6 @@
 		modifier = {
 			factor = 1.2
 			has_trait = family_first
-		}
-
-		# Ambitious
-		modifier = {
-			factor = 1.1
-			has_trait = ambitious
 		}
 
 		# Accused of Decadence
