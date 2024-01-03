@@ -1,0 +1,29 @@
+﻿house_founder = {
+	category = fame
+	
+	opposites = {
+		bastard
+		legitimized_bastard
+		wild_oat
+		bastard_founder
+	}
+	
+	monthly_prestige_gain_mult = 0.1
+	dynasty_house_opinion = 15
+
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_house_founder_desc
+			}
+			desc = trait_house_founder_character_desc
+		}
+	}
+
+	ai_honor = low_positive_ai_value
+}

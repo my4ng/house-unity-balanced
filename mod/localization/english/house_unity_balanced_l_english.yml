@@ -39,3 +39,8 @@
   create_cadet_branch_decision_friendly_relation: "You are not [friend|E] or [best_friend|E] with [CHARACTER.GetHouse.GetHeadOfHouse.GetShortUIName]"
   split_house_opinion: "Split from House"
   clan_unity_split_house.desc: "split from [house|E]"
+
+  # House Founder Trait
+  trait_house_founder: "House Founder"
+  trait_house_founder_desc: "This character has split from their old House and founded their own."
+  trait_house_founder_character_desc: "[ROOT.GetCharacter.GetFirstNameNoTooltip] has split from [ROOT.GetCharacter.GetHerHis] old House and founded House [ROOT.GetCharacter.GetHouse.GetNameNoTooltip]."
