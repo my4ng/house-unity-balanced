@@ -146,6 +146,12 @@ major_eqbm_unity_value = {
 	multiply = eqbm_unity_base
 }
 
+massive_eqbm_unity_value = {
+	value = 30
+	multiply = eqbm_unity_base
+}
+
+# TODO: Add decision for house head to add parameter that increases the multiplier value
 unity_house_head_multiplier_value = 2 # How much more of an impact house heads have on house unity
 
 # EFFECTS AND PARAMETER VALUES
