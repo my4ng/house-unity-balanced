@@ -32,7 +32,9 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
   - Change Artifact history and claim from defender to Artifact owner
 - Tweaked character interaction (e.g. lover, rival) House Unity changes
 - Improved House Unity history descriptions
-- Allowed clan vassal Create Cadet Branch Decision (with additional conditions!)
+- Allowed clan vassal Create Cadet Branch Decision
+  - Independent, Vassal, Vassal (House) tiers
+  - House Founder Trait
 
 ## Roadmap
 

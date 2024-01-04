@@ -29,7 +29,11 @@ At its core, it uses dynamic scaling to adjust any House Unity changes depending
 [/list]
 [*]Tweaked character interaction (e.g. lover, rival) House Unity changes
 [*]Improved House Unity history descriptions
-[*]Allowed clan vassal Create Cadet Branch Decision (with additional conditions!)
+[*]Allowed clan vassal Create Cadet Branch Decision
+[list]
+  [*]Independent, Vassal, Vassal (House) tiers
+  [*]House Founder Trait
+[/list]
 [/list]
 
 [hr][/hr]
