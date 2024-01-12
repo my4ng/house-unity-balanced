@@ -1,0 +1,88 @@
+﻿khums_special_rights_tax_collector = {
+	tax_factor = 0.2
+	levies_factor = 0.2
+
+	is_valid = {
+		scope:liege = {
+			custom_description = {
+				text = liege_royal_or_house_head
+				OR = {
+					AND = {
+						exists = house
+						exists = house.house_head
+						house.house_head = this
+					}
+					highest_held_title_tier >= tier_kingdom
+				}
+			}
+		}
+	}
+
+	is_vassal_valid = {
+		exists = scope:liege.house
+		exists = scope:vassal.house
+		scope:vassal.house = scope:liege.house
+	}
+
+	liege_modifier = {
+		tyranny_gain_mult = 0.02
+		monthly_prestige_gain_mult = -0.02
+	}
+
+	vassal_modifier = {
+		opinion_of_liege = -40
+	}
+
+	ai_will_do = {
+		value = tax_obligation_base_ai_will_do
+		
+		if = {
+			limit = {
+				# If there are more house-member vassals than half the slots,
+				# AND they have positive opinion towards the liege
+				# (to avoid splitting house excessively)
+				scope:liege = {
+					exists = house
+					any_vassal = {
+						count >= tax_obligation_half_of_slot
+						government_has_flag = government_is_clan
+						house ?= prev.house
+						opinion = {
+							target = scope:liege
+							value >= 0
+						}
+					}
+				}
+			}
+			add = 4
+		}
+
+		# House head always wants to move away from extremes
+		if = {
+			limit = {
+				scope:liege.house ?= {
+					has_house_unity_stage = harmonious
+				}
+			}
+			add = 1
+		}
+		else_if = {
+			limit = {
+				scope:liege.house ?= {
+					has_house_unity_stage = antagonistic
+				}
+			}
+			add = -1
+		}
+
+		# Negative prestige liege
+		if = {
+			limit = {
+				scope:liege = {
+					prestige < 0
+				}
+			}
+			add = -2
+		}
+	}
+}

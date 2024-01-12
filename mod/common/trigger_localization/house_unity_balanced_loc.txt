@@ -33,3 +33,7 @@ create_cadet_branch_decision_no_liege_house = {
 create_cadet_branch_decision_liege_house = {
 	first = create_cadet_branch_decision_liege_house
 }
+
+liege_royal_or_house_head = {
+	first_not = liege_royal_or_house_head
+}

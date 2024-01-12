@@ -46,3 +46,8 @@
   trait_cadet_house_founder: "House Founder"
   trait_cadet_house_founder_desc: "This character has split from their old house and founded their own."
   trait_cadet_house_founder_character_desc: "[ROOT.Char.GetFirstNameNoTooltip] has split from [ROOT.Char.GetHerHis] old house and founded the House [ROOT.Char.GetHouse.GetNameNoTooltip]."
+
+  # Khums Tax Slot Obligation
+  liege_royal_or_house_head: "You are #bold not#! royal or the house head of House [CHARACTER.GetHouse.GetNameNoTooltip]"
+  khums_special_rights_tax_collector: "Khums"
+  khums_special_rights_tax_collector_flavor_desc: "Khums is a tax imposed on house-member vassals by the authority of a royal or house head liege, as a token for their submission for the greater good of the entire house."
