@@ -50,4 +50,6 @@
   # Khums Tax Slot Obligation
   liege_royal_or_house_head: "You are #bold not#! royal or the house head of House [CHARACTER.GetHouse.GetNameNoTooltip]"
   khums_special_rights_tax_collector: "Khums"
-  khums_special_rights_tax_collector_flavor_desc: "Khums is a tax imposed on house-member vassals by the authority of a royal or house head liege, as a token for their submission for the greater good of the entire house."
+  khums_special_rights_tax_collector_flavor_desc: "Khums is a tax imposed on house-member vassals by the authority of a royal or house head liege, as a token for their submission in the name of the greater good of the house."
+  khums_special_rights_tax_collector_desc: "The [vassal|E] may hold contempt for this thinly disguised extortion, and break away from the [house|E] when they get a chance."
+  clan_unity_tax_slot_obligation_khums.desc: "continues [unity_target.GetHerHis] extortion with the [GetTaxSlotObligation('khums_special_rights_tax_collector').GetName] [tax_decree|E]"

@@ -1,0 +1,51 @@
+﻿yearly_playable_pulse = {
+	on_actions = { 
+		clan_tax_slot_obligation_khums_on_action
+	}
+}
+
+clan_tax_slot_obligation_khums_on_action = {
+	effect = {
+		if = {
+			limit = {
+				government_has_flag = government_is_clan
+				exists = house
+				any_tax_slot = {
+					is_active_obligation = khums_special_rights_tax_collector
+					any_tax_slot_vassal = {
+						count > 0
+						always = yes
+					}
+				}
+			}
+			save_scope_as = unity_target
+			house = {
+				save_scope_as = liege_house
+				add_unity_value = {
+					value = {
+						scope:unity_target = {
+							every_tax_slot = {
+								limit = {
+									is_active_obligation = khums_special_rights_tax_collector
+								}
+								every_tax_slot_vassal = {
+									limit = {
+										exists = house				# Double-check they are of the same house since
+										house = scope:liege_house 	# conditions are only checked on vassal assigned
+									}
+									add = 1
+								}
+							}
+							house = {
+								multiply = miniscule_unity_loss
+								multiply = 0.5
+							}
+						}
+					}
+					character = root
+					desc = clan_unity_tax_slot_obligation_khums.desc
+				}
+			}
+		}
+	}
+}

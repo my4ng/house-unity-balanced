@@ -27,6 +27,7 @@
 	liege_modifier = {
 		tyranny_gain_mult = 0.02
 		monthly_prestige_gain_mult = -0.02
+		dynasty_house_opinion = -1
 	}
 
 	vassal_modifier = {
