@@ -34,6 +34,11 @@ At its core, it uses dynamic scaling to adjust any House Unity changes depending
   [*]Independent, Vassal, Vassal (House) tiers
   [*]House Founder Trait
 [/list]
+[*]Khums Tax Decree
+[list]
+  [*]20% extra tax and levies contribution from house-member vassals
+  [*]Yearly house unity loss, negative liege opinion, etc.
+[/list]
 [/list]
 
 [hr][/hr]

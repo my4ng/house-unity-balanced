@@ -35,6 +35,9 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 - Allowed clan vassal Create Cadet Branch Decision
   - Independent, Vassal, Vassal (House) tiers
   - House Founder Trait
+- Khums[^1] Tax Decree
+  - 20% extra tax and levies contribution from house-member vassals
+  - Yearly house unity loss, negative liege opinion, etc.
 
 ## Roadmap
 
@@ -56,3 +59,5 @@ This mod is licensed under the **BSD-2-Clause Plus Patent License**.
 This license is designed to provide: a) a simple permissive license; b) that is compatible with the GNU General Public License (GPL), version 2; and c) which also has an express patent grant included.
 
  **NOTE: this license does NOT cover any part of the scripts, localization or other files which is derived or copied from the base CK3 game, which is published and licensed by Paradox Interactive.**
+
+[^1]: This is **not** based on the historic [khums](https://en.wikipedia.org/wiki/Khums) tax found in Islamic taxation system, where muslims paid the tax for certain types of income. It simply borrows the literal meaning of the word, "one-fifth", for this use case.
