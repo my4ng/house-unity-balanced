@@ -40,14 +40,18 @@ artifact_dynasty_banner_dynast_trigger = {
 # Cadet Branch Decision
 create_cadet_branch_decision_no_liege_house_trigger = {
 	trigger_if = {
-		limit = { is_ai = no }
+		limit = {
+			is_ai = no
+		}
 		prestige_level >= 2
 	}
 }
 
 create_cadet_branch_decision_liege_house_trigger = {
 	trigger_if = {
-		limit = { is_ai = yes }
+		limit = {
+			is_ai = yes
+		}
 		prestige >= major_prestige_value
 		prestige_level >= 2
 	}
@@ -55,17 +59,16 @@ create_cadet_branch_decision_liege_house_trigger = {
 		prestige >= massive_prestige_value
 		prestige_level >= 3
 	}
-	
 	highest_held_title_tier >= tier_duchy
-
-	trigger_if = {
-		limit = { is_ai = no }
-		has_usable_hook = house.house_head
-	}
-
 	trigger_if = {
 		limit = {
-			OR = { 
+			is_ai = no
+		}
+		has_usable_hook = house.house_head
+	}
+	trigger_if = {
+		limit = {
+			OR = {
 				has_relation_friend = house.house_head
 				has_relation_best_friend = house.house_head
 			}
@@ -75,7 +78,6 @@ create_cadet_branch_decision_liege_house_trigger = {
 			always = no
 		}
 	}
-
 	# FP3 (Legacy of Persia) ONLY
 	trigger_if = {
 		limit = {
@@ -88,6 +90,6 @@ create_cadet_branch_decision_liege_house_trigger = {
 		}
 		NOT = {
 			has_trait = fp3_struggle_supporter
-		}		
+		}
 	}
 }

@@ -316,7 +316,7 @@
 				}
 			}
 		}
-
+		
 		# Clan
 		# c = (ai_boldness - dread) * 1/100
 		# factor = -1/50 * opinion + c
@@ -328,7 +328,7 @@
 		# c = 1,  op = 0    => f = 1
 		modifier = {
 			factor = {
-				value = "opinion(house.house_head)"
+				value = scope:opinion_house_head
 				multiply = -0.02
 				add = {
 					value = ai_boldness
@@ -339,6 +339,10 @@
 				max = 1
 			}
 			government_has_flag = government_is_clan
+			save_temporary_opinion_value_as = {
+				name = opinion_house_head
+				target = house.house_head
+			}
 		}
 
 		# House Unity - Antagonistic

@@ -13,8 +13,8 @@
 					limit = { 
 						# Check if EITHER character is the house head
 						OR = {
-							house_head = $CHARACTER$
-							house_head = $TARGET$
+							house_head = scope:unity_character
+							house_head = scope:unity_target
 						}
 					}
 					multiply = unity_house_head_multiplier_value
@@ -24,7 +24,7 @@
 					multiply = -1
 				}
 			}
-			character = $CHARACTER$
+			character = scope:unity_character
 			desc = $DESC$
 		}
 
@@ -43,8 +43,8 @@
 			}
 			# Notify human players if they are not involved!
 			notify_players_about_unity_change_effect = {
-				CHARACTER = $CHARACTER$
-				TARGET = $TARGET$
+				CHARACTER = scope:unity_character
+				TARGET = scope:unity_target
 				DESC = $DESC$
 			}
 		}
