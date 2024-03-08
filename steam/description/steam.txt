@@ -1,4 +1,4 @@
-﻿[h1] SUPPORT 1.11.* (PEACOCK) [/h1]
+﻿[h1] SUPPORT 1.12.* (SCYTHE) [/h1]
 
 [h1] Introdution [/h1]
 
