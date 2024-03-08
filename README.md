@@ -5,12 +5,12 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/supported_version-1.11.*-darkred" alt="Supported Version: 1.11.*">
-  <img src="https://img.shields.io/steam/subscriptions/3122203007?color=dodgerblue" alt="Steam Subscriptions">
+  <img src="https://img.shields.io/badge/supported_CK3_version-1.12.*-darkred" alt="Supported Version: 1.12.*">
+  <img src="https://img.shields.io/steam/subscriptions/3122203007?label=steam%20subscribers&color=dodgerblue" alt="Steam subscriber count">
   <img src="https://img.shields.io/badge/license-BSD--2--Clause_Plus_Patent-green" alt="License: BSD-2-Clause Plus Patent">
 </p>
 
-**House Unity Balanced** is a Crusader Kings 3 mod, designed to rework and adjust aspects of House Unity, "a measure of the internal stability in the ruling house of a Clan realm".
+**House Unity Balanced** is a Crusader Kings 3 mod, designed to rework and adjust aspects of House Unity.
 
 The motivation is straight-forward; as a house grows over time, the proportional power of each individual member is _significantly_ reduced. Since there are more unity-reducing actions, such as imprisonment and demand artifact, than promoting ones, the house unity almost always tends towards antagonistic, with little the player can do to swing the scale. This is exacerbated by the fact that cadets branches may only be created by independent rulers in the base game.
 
@@ -47,8 +47,8 @@ The primary features of this mod is dynamic scaling of house unity changes: if t
 - [x] Character Interactions
 - [ ] Diplomatic Interactions
 - [ ] Intrigue Schemes
-- [x] Cadet Branch Decision
 - [ ] Documentation
+- [x] Cadet Branch Decision
 - [x] Thumbnail
 - [x] Steam Workshop
 
