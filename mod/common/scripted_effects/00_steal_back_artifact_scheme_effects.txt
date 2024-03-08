@@ -27,6 +27,13 @@ steal_back_artifact_success_effect = {
 			MODIFIER = stole_artifact_from_me
 		}
 
+		random_character_artifact = {
+			limit = {
+				scope:owner = { has_artifact_claim = prev }
+			}
+			save_scope_as = artifact_to_steal
+		}
+
 		# Stolen House score and message effects
 		if = {
 			limit = {
